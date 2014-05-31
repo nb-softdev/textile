@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<title>Textile</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Textile" %>">
+    
+    <%#= stylesheet_link_tag 'home/application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'company/application', 'data-turbolinks-track' => true %>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->    
+    <%= csrf_meta_tags %>
+  </head>
+
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+
+				<!-- Logo -->
+					<h1 id="logo"><a href="#"><%= current_subdomain %></a></h1>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro">Intro</a></li>
+							<li><a href="#one">What I Do</a></li>
+							<li><a href="#two">Who I Am</a></li>
+							<li><a href="#work">My Work</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</nav>
+
+			</header>
+			
+			<%= yield %>
+			
+		<!-- Footer -->
+			<footer id="footer">
+			
+				<!--
+				     Social Icons
+				     
+				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+				-->
+					<ul class="actions">
+						<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
+						<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa solo fa-google-plus"><span>Google+</span></a></li>
+						<li><a href="#" class="fa solo fa-dribbble"><span>Dribbble</span></a></li>
+						<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Untitled</li>
+						<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+					</ul>
+			
+			</footer>
+
+	</body>
+
+
+
+</html>
