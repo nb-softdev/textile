@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140531175023) do
     t.integer  "market_id"
     t.string   "name"
     t.text     "description"
+    t.string   "sub_domain"
     t.string   "contact_person"
     t.string   "mobile_1"
     t.string   "mobile_2"

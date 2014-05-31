@@ -13,13 +13,13 @@ class Company < ActiveRecord::Base
   
   scope :active, conditions: { is_active: true }
   
-  has_many :parent_categories, through: :products, source: :category, conditions: {"categories.category_id" => ""}
+  has_many :categories, through: :products, source: :category
   
   #scope :parent_categories, joins(:products => :category).where("categories.category_id IS null")
   
   has_attached_file :logo,
   styles: {
-    thumb: "50x200#"
+    thumb: "200x60#"
   },
   path: ":attachment/:id/:style/:filename"
 
@@ -29,7 +29,7 @@ class Company < ActiveRecord::Base
                                     :message => 'file must be of an image format'
   # FIXME: this varidator is not found somehow
   # validates_attachment_file_name :media, :matches => [/gif\Z/, /jpe?g\Z/, /png\Z/, /bmp\Z/, /tif?f\Z/]
-  validates_attachment_size :media, :less_than => 1.megabytes
+  validates_attachment_size :logo, :less_than => 1.megabytes
   
   def photo_url
     photo.url(:thumb)

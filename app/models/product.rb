@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   
   has_attached_file :photo,
   styles: {
-    thumb: "500x450#",
+    thumb: "700x450#",
     original: "100%"
   },
   path: ":attachment/:id/:style/:filename"
@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
                                     :message => 'file must be of an image format'
   # FIXME: this varidator is not found somehow
   # validates_attachment_file_name :media, :matches => [/gif\Z/, /jpe?g\Z/, /png\Z/, /bmp\Z/, /tif?f\Z/]
-  validates_attachment_size :media, :less_than => 2.megabytes  
+  validates_attachment_size :photo, :less_than => 2.megabytes  
   
   def photo_url
     photo.url(:thumb)
