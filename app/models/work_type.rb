@@ -5,4 +5,6 @@ class WorkType < ActiveRecord::Base
   has_many :products, through: :companies, source: :products
     
   validates_presence_of :name
+  
+  scope :active, -> {where(:is_active => true)}
 end

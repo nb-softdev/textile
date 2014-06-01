@@ -4,7 +4,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
   end
 
   # GET /companies/1
@@ -28,7 +28,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to [:admin, @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to [:admin, @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::CompaniesController < Admin::AdminApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params[:company]
+      params.require(:company).permit!
     end
 end

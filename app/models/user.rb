@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  scope :active, conditions: { is_active: true }
+  scope :active, -> {where(:is_active => true)}
   
   has_attached_file :photo,
   styles: {

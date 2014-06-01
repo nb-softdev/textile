@@ -4,7 +4,7 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
   # GET /work_types
   # GET /work_types.json
   def index
-    @work_types = WorkType.all
+    @work_types = WorkType.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
   end
 
   # GET /work_types/1
@@ -28,7 +28,7 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @work_type.save
-        format.html { redirect_to @work_type, notice: 'Work type was successfully created.' }
+        format.html { redirect_to [:admin, @work_type], notice: 'Work type was successfully created.' }
         format.json { render :show, status: :created, location: @work_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @work_type.update(work_type_params)
-        format.html { redirect_to @work_type, notice: 'Work type was successfully updated.' }
+        format.html { redirect_to [:admin, @work_type], notice: 'Work type was successfully updated.' }
         format.json { render :show, status: :ok, location: @work_type }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_type_params
-      params[:work_type]
+      params.require(:work_type).permit(:name, :description, :is_active)
     end
 end

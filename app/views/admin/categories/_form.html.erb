@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+  <div class="field">
+      <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    </div>
+    
+   	<div class="field">
+      <%= f.label :category_id %>
+			<%= f.select :category_id, options_for_select([["Select", ""]] + Category.active.where("category_id IS NULL").collect {|r| [r.name, r.id]}, (@category.parent.id unless @category.parent.nil?))  %>
+   	</div>	    
+
+  <div class="field">
+      <%= f.label :is_active %><br>
+    <%= f.check_box :is_active %>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

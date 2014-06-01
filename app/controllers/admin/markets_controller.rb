@@ -4,7 +4,7 @@ class Admin::MarketsController < Admin::AdminApplicationController
   # GET /markets
   # GET /markets.json
   def index
-    @markets = Market.all
+    @markets = Market.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
   end
 
   # GET /markets/1
@@ -28,7 +28,7 @@ class Admin::MarketsController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @market.save
-        format.html { redirect_to @market, notice: 'Market was successfully created.' }
+        format.html { redirect_to [:admin, @market], notice: 'Market was successfully created.' }
         format.json { render :show, status: :created, location: @market }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::MarketsController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to @market, notice: 'Market was successfully updated.' }
+        format.html { redirect_to [:admin, @market], notice: 'Market was successfully updated.' }
         format.json { render :show, status: :ok, location: @market }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::MarketsController < Admin::AdminApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params[:market]
+      params.require(:market).permit!
     end
 end

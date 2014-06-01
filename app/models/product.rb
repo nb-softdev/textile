@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   
   validates_presence_of :name, :company_id, :code
   
-  scope :active, conditions: { is_active: true }
+  scope :active, -> {where(:is_active => true)}
   
   has_attached_file :photo,
   styles: {

@@ -5,5 +5,5 @@ class Category < ActiveRecord::Base
   
   validates_presence_of :name
   
-  scope :active, conditions: { is_active: true }
+  scope :active, -> {where(:is_active => true)}
 end

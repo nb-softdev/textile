@@ -11,6 +11,46 @@
     </div>
   <% end %>
 
+  <div class="field">
+      <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    </div>
+    
+  <div class="field">
+      <%= f.label :description %><br>
+    <%= f.text_area :description %>
+    </div>
+    
+  <div class="field">
+      <%= f.label :code %><br>
+    <%= f.text_field :code %>
+    </div>
+    
+  <div class="field">
+      <%= f.label :price %><br>
+    <%= f.text_field :price %>
+    </div>
+    
+  <div class="field">
+      <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
+    </div>        
+
+   	<div class="field">
+      <%= f.label :category_id %>
+			<%= f.select :category_id, options_for_select([["Select", ""]] + Category.active.where("category_id IS NOT NULL").collect {|r| [r.name, r.id]}, (@product.category.id unless @product.category.nil?))  %>
+   	</div>	    
+   	
+   	<div class="field">
+      <%= f.label :company_id %>
+			<%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@product.company.id unless @product.company.nil?))  %>
+   	</div>	       	
+
+  <div class="field">
+      <%= f.label :is_active %><br>
+    <%= f.check_box :is_active %>
+    </div>    
+
   <div class="actions">
     <%= f.submit %>
   </div>

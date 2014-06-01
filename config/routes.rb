@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/home#index', :as => :admin_home
   
   namespace :admin do
-    resources :categories, :markets, :work_types, :contact_us
+    resources :categories, :markets, :work_types, :contact_us, :products, :companies
     
-    resources :companies do
-      collection do
-        get :products
-      end
-    end
+    #resources :companies do
+     # collection do
+      #  get :products
+      #end
+    #end
   end
   
   namespace :company do

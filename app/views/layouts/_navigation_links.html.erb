@@ -8,4 +8,8 @@
 <% end %>
 <% if user_signed_in? %>
   <li><%= link_to 'Users', users_path %></li>
+  <li><%= link_to 'Markets', admin_markets_path %></li>
+  <li><%= link_to 'Companies', admin_companies_path %></li>
+  <li><%= link_to 'Categories', admin_categories_path %></li>
+  <li><%= link_to 'Work Types', admin_work_types_path %></li>
 <% end %>
