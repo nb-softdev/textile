@@ -13,13 +13,13 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :phone_2
       t.string :phone_3
       t.text :address
-      t.string :what_i_do_label
-      t.string :who_i_am_label
-      t.string :my_work_label
+      t.string :what_i_do_label, :default => "What I Do"
+      t.string :who_i_am_label, :default => "Who I Am"
+      t.string :my_work_label, :default => "My Work"
       t.text :what_i_do_desc
       t.text :who_i_am_desc
       t.text :my_work_desc
-      t.string :footer_content
+      t.string :footer_content, :default => "© 2014 Textile"
       t.boolean :is_active, :default => true
 
       t.timestamps

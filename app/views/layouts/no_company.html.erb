@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<title>Textile</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Textile" %>">
+    
+    <%#= stylesheet_link_tag 'home/application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'company/application', 'data-turbolinks-track' => true %>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->    
+    <%= csrf_meta_tags %>
+  </head>
+
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<!-- Logo -->
+					<h1 id="logo"><%= image_tag("logo.jpg", :width => "200", :height => "60") %></h1>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><%= link_to 'Home', BASE_URL %></li>
+						</ul>
+					</nav>
+			</header>
+			
+			<%= yield %>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy;  2014 Textile</li>
+					</ul>
+			</footer>
+
+	</body>
+
+
+
+</html>

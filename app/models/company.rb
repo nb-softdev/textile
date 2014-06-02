@@ -20,8 +20,7 @@ class Company < ActiveRecord::Base
   has_attached_file :logo,
   styles: {
     thumb: "200x60#"
-  },
-  path: ":attachment/:id/:style/:filename"
+  }
 
   validates_attachment_content_type :logo,
                                     :content_type => ['image/gif', 'image/jpg', 'image/jpeg',
@@ -31,8 +30,8 @@ class Company < ActiveRecord::Base
   # validates_attachment_file_name :media, :matches => [/gif\Z/, /jpe?g\Z/, /png\Z/, /bmp\Z/, /tif?f\Z/]
   validates_attachment_size :logo, :less_than => 1.megabytes
   
-  def photo_url
-    photo.url(:thumb)
+  def logo_url
+    logo.url(:thumb)
   end
   
 end

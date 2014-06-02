@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 20140531175023) do
     t.string   "phone_2"
     t.string   "phone_3"
     t.text     "address"
-    t.string   "what_i_do_label"
-    t.string   "who_i_am_label"
-    t.string   "my_work_label"
+    t.string   "what_i_do_label",   default: "What I Do"
+    t.string   "who_i_am_label",    default: "Who I Am"
+    t.string   "my_work_label",     default: "My Work"
     t.text     "what_i_do_desc"
     t.text     "who_i_am_desc"
     t.text     "my_work_desc"
-    t.string   "footer_content"
+    t.string   "footer_content",    default: "© 2014 Textile"
     t.boolean  "is_active",         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140531175023) do
   create_table "company_users", force: true do |t|
     t.integer  "company_id"
     t.integer  "user_id"
-    t.string   "role"
+    t.string   "role",       default: "MANAGER"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,18 +106,19 @@ ActiveRecord::Schema.define(version: 20140531175023) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",   null: false
+    t.string   "email",                  default: "",    null: false
     t.string   "name",                   default: ""
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "is_active",              default: true
+    t.boolean  "is_admin",               default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"

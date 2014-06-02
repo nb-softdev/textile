@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
   has_attached_file :photo,
   styles: {
     thumb: "200x200#"
-  },
-  path: ":attachment/:id/:style/:filename"
+  }
   
   validates_attachment_content_type :photo,
                                     :content_type => ['image/gif', 'image/jpg', 'image/jpeg',

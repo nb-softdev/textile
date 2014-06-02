@@ -3,7 +3,7 @@ class CreateCompanyUsers < ActiveRecord::Migration
     create_table :company_users do |t|
       t.integer :company_id
       t.integer :user_id
-      t.string :role
+      t.string :role, :default => "MANAGER"
 
       t.timestamps
     end

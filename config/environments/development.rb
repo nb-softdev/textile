@@ -51,4 +51,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  BASE_URL = "http://textile.com:3000"
+  BASE_URL_DOMAIN = "textile.com:3000"  
 end

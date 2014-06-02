@@ -10,8 +10,7 @@ class Product < ActiveRecord::Base
   styles: {
     thumb: "700x450#",
     original: "100%"
-  },
-  path: ":attachment/:id/:style/:filename"
+  }
   
   validates_attachment_content_type :photo,
                                     :content_type => ['image/gif', 'image/jpg', 'image/jpeg',

@@ -10,24 +10,113 @@
       </ul>
     </div>
   <% end %>
+<div class="authform">
+   	<div class="form-group">
+      <%= f.label :market_id %>
+			<%= f.select :market_id, options_for_select([["Select", ""]] + Market.active.collect {|r| [r.name, r.id]}, (@company.market.id unless @company.market.nil?))  %>
+   	</div>	    
 
-  <div class="field">
-      <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+      <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
     </div>
     
-  <div class="field">
-      <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="form-group">
+      <%= f.label :description %>
+    <%= f.text_area :description, :class => "form-control" %>
     </div>
     
-  <div class="field">
-      <%= f.label :sub_domain %><br>
-    <%= f.text_field :sub_domain %>
+  <div class="form-group">
+      <%= f.label :sub_domain %>
+    <%= f.text_field :sub_domain, :class => "form-control" %>
     </div>
+
+  <div class="form-group">
+      <%= f.label :contact_person %>
+    <%= f.text_field :contact_person, :class => "form-control" %>
+    </div>
+  <div class="form-group">
+      <%= f.label :mobile_1 %>
+    <%= f.text_field :mobile_1, :class => "form-control" %>
+    </div>
+
+  <div class="form-group">
+      <%= f.label :mobile_2 %>
+    <%= f.text_field :mobile_2, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :mobile_3 %>
+    <%= f.text_field :mobile_3, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :phone_1 %>
+    <%= f.text_field :phone_1, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :phone_2 %>
+    <%= f.text_field :phone_2, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :phone_3 %>
+    <%= f.text_field :phone_3, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :what_i_do_label %>
+    <%= f.text_field :what_i_do_label, :class => "form-control" %>
+    </div>
+
+  <div class="form-group">
+      <%= f.label :what_i_do_desc %>
+    <%= f.text_area :what_i_do_desc, :class => "form-control" %>
+    </div>           
+    
+  <div class="form-group">
+      <%= f.label :who_i_am_label %>
+    <%= f.text_field :who_i_am_label, :class => "form-control" %>
+    </div>
+
+  <div class="form-group">
+      <%= f.label :who_i_am_desc %>
+    <%= f.text_area :who_i_am_desc, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :my_work_label %>
+    <%= f.text_field :my_work_label, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group">
+      <%= f.label :my_work_desc %>
+    <%= f.text_area :my_work_desc, :class => "form-control" %>
+    </div>           
+    
+  <div class="form-group">
+      <%= f.label :footer_content %>
+    <%= f.text_field :footer_content, :class => "form-control" %>
+    </div>           
+    
+  <div class="form-group">
+      <%= f.label :logo %>
+    <%= f.file_field :logo, :class => "form-control" %>
+    </div>   
+     
+  <div class="form-group">
+    <%= image_tag(@company.logo_url) if @company.logo.present? %>
+    </div>     
+    
+  <div class="form-group">
+      <%= f.label :is_active %>
+    <%= f.check_box :is_active %>
+    </div>                                                                              
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "button right" %>
+  </div>
   </div>
 <% end %>
