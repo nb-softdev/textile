@@ -3,9 +3,10 @@
 	<li><%= link_to 'Home', admin_home_path, class: 'navbar-brand' %></li>
   <li><%= link_to 'Users', admin_users_path %></li>
   <li><%= link_to 'Markets', admin_markets_path %></li>
-  <li><%= link_to 'Companies', admin_companies_path %></li>
   <li><%= link_to 'Categories', admin_categories_path %></li>
-  <li><%= link_to 'Work Types', admin_work_types_path %></li>
+  <li><%= link_to 'Work Types', admin_work_types_path %></li>  
+  <li><%= link_to 'Companies', admin_companies_path %></li>
+  <li><%= link_to 'Products', admin_products_path %></li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% elsif user_signed_in? %>

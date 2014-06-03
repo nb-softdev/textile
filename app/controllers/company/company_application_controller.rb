@@ -4,13 +4,37 @@ class Company::CompanyApplicationController < ApplicationController
   protect_from_forgery with: :exception
   
   before_action :company_subdomain
-  helper_method :current_company  
+  helper_method :current_company, :company_address, :company_mobiles, :company_phones
 
   layout 'company'
   
   def current_company
-    @current_company = Company.find_by_sub_domain(current_subdomain)
+    @current_company = Company.includes(:market, :products).find_by_sub_domain(current_subdomain)
   end
+  
+  def company_address
+    cmp_add = []
+    cmp_add << @current_company.address
+    if @current_company.market
+      cmp_add << @current_company.market.name
+      cmp_add << @current_company.market.area
+      cmp_add << @current_company.market.city
+      cmp_add << @current_company.market.pincode
+    end
+    cmp_add.delete_if(&:blank?).join(', ')
+  end
+  
+  def company_mobiles
+    cmp_mobiles = []
+    cmp_mobiles << @current_company.mobile_1 << @current_company.mobile_2 << @current_company.mobile_3
+    cmp_mobiles.delete_if(&:blank?).join(', ')    
+  end
+  
+  def company_phones
+    cmp_phones = []
+    cmp_phones << @current_company.phone_1 << @current_company.phone_2 << @current_company.phone_3
+    cmp_phones.delete_if(&:blank?).join(', ')
+  end  
   
   def company_subdomain
     if current_subdomain and current_company.nil?
