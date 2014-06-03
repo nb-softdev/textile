@@ -15,6 +15,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    #1.times { @product.company_work_types.build }
   end
 
   # GET /companies/1/edit

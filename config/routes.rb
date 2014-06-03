@@ -22,9 +22,13 @@ Rails.application.routes.draw do
     #end
   end
   
+  
   namespace :company do
-    resources :contact_us, :products
-  end  
+    namespace :admin do
+      resources :contact_us, :products, :companies
+      get '/home' => 'home#index', :as => :home
+    end  
+  end
   
   get '/company_not_found' => 'no_company#company_not_found', :as => :company_not_found
   

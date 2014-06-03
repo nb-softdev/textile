@@ -40,7 +40,7 @@
 							<li><a href="#work"><%= @current_company.my_work_label %></a></li>
 							<li><a href="#contact">Contact</a></li>
 							<% if user_signed_in? %>
-								<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+								<li><%= link_to 'Admin Area', company_admin_home_path, class: 'navbar-brand' %></li>
 							  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 							<% else %>
 							  <li><%= link_to 'Sign in', new_user_session_path %></li>

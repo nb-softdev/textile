@@ -1,10 +1,10 @@
-class Company::ProductsController < Company::CompanyApplicationController  
+class Company::Admin::ProductsController < Company::Admin::CompanyAdminApplicationController  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = @current_company.products.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
   end
 
   # GET /products/1
@@ -28,7 +28,7 @@ class Company::ProductsController < Company::CompanyApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to [:company_admin, @product], notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Company::ProductsController < Company::CompanyApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to [:company_admin, @product], notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Company::ProductsController < Company::CompanyApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to company_products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class Company::ProductsController < Company::CompanyApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params[:product]
+      params.require(:product).permit!
     end
 end

@@ -1,10 +1,10 @@
-class Company::ContactUsController < Company::CompanyApplicationController  
+class Company::Admin::ContactUsController < Company::Admin::CompanyAdminApplicationController  
   before_action :set_contact_u, only: [:show, :edit, :update, :destroy]
 
   # GET /contact_us
   # GET /contact_us.json
   def index
-    @contact_us = ContactU.all
+    @contact_us = ContactU.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
   end
 
   # GET /contact_us/1
@@ -28,7 +28,7 @@ class Company::ContactUsController < Company::CompanyApplicationController
 
     respond_to do |format|
       if @contact_u.save
-        format.html { redirect_to @contact_u, notice: 'Contact u was successfully created.' }
+        format.html { redirect_to [:admin, @contact_u], notice: 'Contact u was successfully created.' }
         format.json { render :show, status: :created, location: @contact_u }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Company::ContactUsController < Company::CompanyApplicationController
   def update
     respond_to do |format|
       if @contact_u.update(contact_u_params)
-        format.html { redirect_to @contact_u, notice: 'Contact u was successfully updated.' }
+        format.html { redirect_to [:admin, @contact_u], notice: 'Contact u was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact_u }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Company::ContactUsController < Company::CompanyApplicationController
   def destroy
     @contact_u.destroy
     respond_to do |format|
-      format.html { redirect_to company_contact_us_url, notice: 'Contact u was successfully destroyed.' }
+      format.html { redirect_to contact_us_url, notice: 'Contact u was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class Company::ContactUsController < Company::CompanyApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_u_params
-      params[:contact_u]
+      params.require(:contact_u).permit!
     end
 end
