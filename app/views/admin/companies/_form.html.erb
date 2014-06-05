@@ -114,12 +114,11 @@
     <%= image_tag(@company.logo_url) if @company.logo.present? %>
     </div>     
 
-    <!--<%#= f.fields_for :company_work_types do |builder| %>
-	   	<div class="field">
-	      <%#= f.label :work_type %>
-				<%#= f.select :work_type_id, options_for_select([["Select", ""]] + WorkType.active.collect {|r| [r.name, r.id]}), :multiple => true  %>
-	   	</div>
-    <%# end %>-->  
+   	<div class="field">
+   		<%= f.label :company_work_types %>
+			<%= select_tag "company_work_type[work_type_id]", options_for_select([["Select", ""]] + WorkType.active.collect {|r| [r.name, r.id]}, @company.work_types.map{|work_type| work_type.id}), :multiple => true  %>
+			<%= hidden_field "company_work_type[company_id]", @company.id %> 
+   	</div>  
     
   <div class="form-group">
       <%= f.label :is_active %>

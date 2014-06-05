@@ -1,0 +1,24 @@
+<h1>Listing Work Types</h1>
+
+<table>
+  <thead>
+    <tr>
+    	<th><%= sortable "name", t("general.name") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_work_types.each do |company_work_type| %>
+      <tr>
+      	<td><%= company_work_type.work_type.name if company_work_type.work_type %></td>
+      	<td><%= link_to 'Edit', edit_company_admin_company_work_type_path(company_work_type) %></td>
+        <td><%= link_to 'Destroy', [:company_admin, company_work_type], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work type', new_company_admin_company_work_type_path %>

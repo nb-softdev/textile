@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :contact_us, :products, :companies
       get '/home' => 'home#index', :as => :home
+      
+      resources :company_work_types do
+        get :autocomplete_work_type_name, :on => :collection
+      end
+      
     end  
   end
   

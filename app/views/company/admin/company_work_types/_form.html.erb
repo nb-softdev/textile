@@ -1,0 +1,26 @@
+<%= form_for [:company_admin, @company_work_type] do |f| %>
+  <% if @company_work_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company_work_type.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @company_work_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :company_id, :value => @current_company.id  %>
+
+  <div class="field">
+      <%= f.label :work_type %><br>
+      <%= autocomplete_field_tag 'work_type_name', (@company_work_type.work_type.name if @company_work_type.work_type), autocomplete_work_type_name_company_admin_company_work_types_path, :size => 75 %>
+			<%#= f.autocomplete_field :work_type_name, autocomplete_work_type_name_company_admin_company_work_types_path %>    
+    </div>
+    
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

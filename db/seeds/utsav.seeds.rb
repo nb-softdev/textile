@@ -1,11 +1,21 @@
-market1 = Market.find_or_create_by(name: "New Textile Market", description: "New Textile Market", address: 'Delhi gate', city: "Surat")
-puts 'CREATED MARKETS:'
+#market details
+@market_name =  "New Textile Market"
+@market_address = 'Delhi gate'
+@market_city = "Surat"
 
-company1 = Company.find_or_create_by(market: market1, name: "Utsav Fashion", sub_domain: 'utsav')
-puts 'CREATED COMPANY:'
 
-user1 = User.create(email: 'nitin.barai777@gmail.com', name: "Nitin Barai", password: 'nitin777', password_confirmation: 'nitin777')
-puts 'CREATED USER:'
+#company details
+@company_name = "Utsav Fashion"
+@company_sub_domain = "utsav"
 
-company_user1 = CompanyUser.find_or_create_by(company: company1, user: user1)
-puts 'CREATED COMPANY USER:'
+#user details
+@user_email = 'utsav@textile.com'
+@user_name = 'Utsav'
+@user_password = 'utsav777'
+
+#work types details
+@work_types = "Dress Material Wholesalers, Batik Print Dress Material Wholesalers, Printed Polyester Dress Material Manufacturers"
+
+
+
+load File.join(Rails.root, 'db', 'seeds', 'default.rb')

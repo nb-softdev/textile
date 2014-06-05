@@ -7,4 +7,7 @@ class WorkType < ActiveRecord::Base
   validates_presence_of :name
   
   scope :active, -> {where(:is_active => true)}
+  
+  scope :default, -> {where(:is_default => true)}
+  
 end

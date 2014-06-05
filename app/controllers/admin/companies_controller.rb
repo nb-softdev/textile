@@ -29,6 +29,10 @@ class Admin::CompaniesController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @company.save
+        @company.work_types.destroy_all
+        params[:company_work_type][:work_type_id].each do |work_type|
+          @company.company_work_types.create(:work_type_id => work_type)
+        end        
         format.html { redirect_to [:admin, @company], notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
@@ -43,6 +47,10 @@ class Admin::CompaniesController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
+        @company.work_types.destroy_all
+        params[:company_work_type][:work_type_id].each do |work_type|
+          @company.company_work_types.create(:work_type_id => work_type)
+        end        
         format.html { redirect_to [:admin, @company], notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else

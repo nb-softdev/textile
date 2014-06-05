@@ -3,6 +3,7 @@ class Company::Admin::CompaniesController < Company::Admin::CompanyAdminApplicat
 
   # GET /companies/1/edit
   def edit
+    #@company.company_work_types.build
   end
 
   # PATCH/PUT /companies/1

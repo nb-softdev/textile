@@ -5,7 +5,7 @@ class Company < ActiveRecord::Base
   has_many :company_work_types, dependent: :destroy
   has_many :work_types, through: :company_work_types
   
-  #accepts_nested_attributes_for :company_work_types, :allow_destroy => true
+  #accepts_nested_attributes_for :company_work_types
   
   has_many :products, dependent: :destroy
   belongs_to :market
