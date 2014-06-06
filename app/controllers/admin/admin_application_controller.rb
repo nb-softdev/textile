@@ -14,10 +14,6 @@ class Admin::AdminApplicationController < ApplicationController
   
   before_filter :restrict_admin_users
 
-  def current_company
-    @current_company = Company.includes(:market, :products).find_by_sub_domain(current_subdomain)
-  end
- 
   def restrict_admin_users
     raise ActionController::RoutingError.new('Not Found') unless (current_user.is_admin)
   end 

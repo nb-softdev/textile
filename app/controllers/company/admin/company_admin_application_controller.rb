@@ -10,13 +10,13 @@ class Company::Admin::CompanyAdminApplicationController < ApplicationController
   
   helper_method :sort_column, :sort_direction
   
-  before_action :company_subdomain
-  helper_method :current_company, :company_address, :company_mobiles, :company_phones
+  before_action :company_subdomain, :current_company
+  helper_method :company_address, :company_mobiles, :company_phones, :current_company
 
   layout 'admin'
   
   def current_company
-    @current_company = Company.includes(:market, :products).find_by_sub_domain(current_subdomain)
+    @current_company ||= Company.includes(:market, :products).find_by_custom_domain(request.host) || Company.includes(:market, :products).find_by_sub_domain(current_subdomain)
   end
   
   def company_address

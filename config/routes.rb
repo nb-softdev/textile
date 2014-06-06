@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   end
 
   get '/' => 'company/home#index', :constraints => { :subdomain => /.+/ }
-  root :to => "home#index"
+  
+  constraints DomainConstraint.new('textile.com') do
+    root :to => 'home#index', :as => :home
+  end
+  root :to => "company/home#index", :as => :company_home
+  
   
   devise_for :users, :controllers => { :sessions => 'sessions', :registrations => 'registrations', :passwords => 'passwords' }
   
