@@ -1,0 +1,33 @@
+<%= form_for ContactUs.new, :url => contact_us_save_path, :html => {:remote => true} do |f| %>
+
+	<div id="contact_us_msg_div">
+		
+	</div>
+
+	<%= f.hidden_field :company_id, :value => (@current_company.id if @current_company.present?), :placeholder => "Name" %>
+	<div class="row half">
+		<div class="4u">
+			<%= f.text_field :name, :placeholder => "Name" %>
+		</div>
+		<div class="4u">
+			<%= f.text_field :email, :placeholder => "Email" %>
+		</div>
+		<div class="4u">
+			<%= f.text_field :phone, :placeholder => "Phone" %>
+		</div>						
+	</div>
+	<div class="row half">
+		<div class="12u">
+			<%= f.text_area :message, :placeholder => "Message", :rows => "6" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="12u">
+			<ul class="actions">
+				<li>
+					<%= f.submit :value => "Send Message", :class => "button" %>
+				</li>	
+			</ul>
+		</div>
+	</div>
+<% end %>

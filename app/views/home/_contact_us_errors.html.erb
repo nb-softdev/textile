@@ -1,0 +1,11 @@
+<div class="row half">
+	<div class="4u">
+		<div class="error">
+		  <ul>
+		  <% @contact_us.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	</div>
+</div>		

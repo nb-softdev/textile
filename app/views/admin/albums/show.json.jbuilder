@@ -1,0 +1,1 @@
+json.extract! @album, :company_id, :name, :description, :code, :is_active, :created_at, :updated_at

@@ -5,17 +5,21 @@ class Company < ActiveRecord::Base
   has_many :company_work_types, dependent: :destroy
   has_many :work_types, through: :company_work_types
   
+  has_many :contact_us, class_name: 'ContactUs' 
+  
   #accepts_nested_attributes_for :company_work_types
   
   has_many :products, dependent: :destroy
   belongs_to :market
   
+  has_many :albums, dependent: :destroy
+  
+  has_many :categories, through: :products, source: :category
+  
   validates_presence_of :name, :sub_domain
   validates_uniqueness_of :sub_domain
   
   scope :active, -> {where(:is_active => true)}
-  
-  has_many :categories, through: :products, source: :category
   
   #scope :parent_categories, joins(:products => :category).where("categories.category_id IS null")
   

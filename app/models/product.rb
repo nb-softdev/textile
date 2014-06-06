@@ -1,6 +1,9 @@
 class Product < ActiveRecord::Base
   belongs_to :company
   belongs_to :category
+
+  has_many :album_products, dependent: :destroy
+  has_many :albums, through: :album_products
   
   validates_presence_of :name, :company_id, :code
   
@@ -8,7 +11,8 @@ class Product < ActiveRecord::Base
   
   has_attached_file :photo,
   styles: {
-    thumb: "300x",
+    thumb: "400x",
+    small: "200x"
     original: "100%"
   }
   
@@ -26,5 +30,9 @@ class Product < ActiveRecord::Base
 
   def photo_url_original
     photo.url(:original)
-  end    
+  end
+  
+  def photo_url_small
+    photo.url(:small)
+  end
 end

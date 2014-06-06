@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :users
-  end
 
   get '/' => 'company/home#index', :constraints => { :subdomain => /.+/ }
-  
   constraints DomainConstraint.new('textile.com') do
     root :to => 'home#index', :as => :home
   end
@@ -13,33 +9,32 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :sessions => 'sessions', :registrations => 'registrations', :passwords => 'passwords' }
   
-  resources :users
+  resources :users, :albums
   
   get '/admin' => 'admin/home#index', :as => :admin_home
-  
   namespace :admin do
     resources :categories, :markets, :work_types, :contact_us, :products, :companies, :users
-    
-    #resources :companies do
+    resources :albums do
+      resources :album_products
+    end
+    #resources :albums do
      # collection do
       #  get :products
       #end
     #end
   end
   
-  
   namespace :company do
     namespace :admin do
-      resources :contact_us, :products, :companies
+      resources :contact_us, :products, :companies, :albums, :album_products
       get '/home' => 'home#index', :as => :home
-      
       resources :company_work_types do
         get :autocomplete_work_type_name, :on => :collection
       end
-      
-    end  
+    end
   end
   
   get '/company_not_found' => 'no_company#company_not_found', :as => :company_not_found
+  post '/contact_us_save' => 'home#contact_us_save', :as => :contact_us_save
   
 end

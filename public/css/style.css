@@ -1420,3 +1420,11 @@
 			margin: 5px !important;
 			width: 32%
 		}
+
+		.error {
+    	color: #A94442;
+		}
+		
+    .success {
+    	color: #3C763D;
+    }
