@@ -1,4 +1,4 @@
-class Admin::AlbumProductsController < Admin::AdminApplicationController  
+class Company::Admin::AlbumProductsController < Company::Admin::CompanyAdminApplicationController  
   before_action :set_album_product, only: [:show, :edit, :update, :destroy]
   
   before_action :set_album
@@ -6,7 +6,7 @@ class Admin::AlbumProductsController < Admin::AdminApplicationController
   # GET /admin/album_products
   # GET /admin/album_products.json
   def index
-    @album_products = AlbumProduct.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
+    @album_products = AlbumProduct.includes(:product, :album).order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
     @album_product = AlbumProduct.new
   end
 
@@ -28,7 +28,7 @@ class Admin::AlbumProductsController < Admin::AdminApplicationController
   # POST /admin/album_products.json
   def create
     @album_product = AlbumProduct.new(album_product_params)
-    @album_products = AlbumProduct.order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
+    @album_products = AlbumProduct.includes(:product, :album).order(sort_column(params[:sort]) + " " + sort_direction(params[:direction])).paginate(:per_page => PER_PAGE, :page => params[:page])
     respond_to do |format|
       if @album_product.save
         @album_product = AlbumProduct.new
@@ -60,7 +60,7 @@ class Admin::AlbumProductsController < Admin::AdminApplicationController
   def destroy
     @album_product.destroy
     respond_to do |format|
-      format.html { redirect_to admin_album_album_products_url(@album), notice: 'Album product was successfully destroyed.' }
+      format.html { redirect_to company_admin_album_album_products_url(@album), notice: 'Album product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,7 +73,7 @@ class Admin::AlbumProductsController < Admin::AdminApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_album
-      @album = Album.find(params[:album_id])
+      @album = Album.includes(:company).find(params[:album_id])
     end    
 
     # Never trust parameters from the scary internet, only allow the white list through.

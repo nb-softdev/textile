@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :sessions => 'sessions', :registrations => 'registrations', :passwords => 'passwords' }
   
-  resources :users, :albums
+  resources :users
   
   get '/admin' => 'admin/home#index', :as => :admin_home
   namespace :admin do
@@ -25,12 +25,16 @@ Rails.application.routes.draw do
   end
   
   namespace :company do
+    resources :albums
     namespace :admin do
-      resources :contact_us, :products, :companies, :albums, :album_products
+      resources :contact_us, :products, :companies
       get '/home' => 'home#index', :as => :home
       resources :company_work_types do
         get :autocomplete_work_type_name, :on => :collection
       end
+      resources :albums do
+        resources :album_products
+      end      
     end
   end
   

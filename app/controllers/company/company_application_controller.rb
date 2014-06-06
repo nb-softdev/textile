@@ -9,7 +9,7 @@ class Company::CompanyApplicationController < ApplicationController
   layout 'company'
   
   def current_company
-    @current_company ||= Company.includes(:market, :products, :work_types).find_by_custom_domain(request.host) || Company.includes(:market, :products).find_by_sub_domain(current_subdomain)
+    @current_company ||= Company.includes(:market, :products, :work_types).find_by_custom_domain(request.host) || Company.includes(:market, :products, :work_types).find_by_sub_domain(current_subdomain)
   end
   
   def company_address

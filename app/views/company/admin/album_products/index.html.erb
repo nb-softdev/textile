@@ -1,0 +1,57 @@
+<table class="table">
+	<tr>
+		<td width="20%">
+			<%= form_for([:company_admin, @album, @album_product]) do |f| %>
+			  <% if @album_product.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@album_product.errors.count, "error") %> prohibited this album_product from being saved:</h2>
+			
+			      <ul>
+			      <% @album_product.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			
+					<%= f.hidden_field :album_id, :value => @album.id %>
+			   	<div class="field">
+			      <%= f.label :product_id %>
+						<%= f.select :product_id, options_for_select([["Select", ""]] + Product.active.where(:company_id => @album.company.id).collect {|r| [r.name, r.id]}, (@album_product.product.id unless @album_product.product.nil?))  %>
+						<%#= f.select :product_id, options_for_select([["Select", ""]] + Product.active.where(:company_id => @album.company.id).collect {|r| [r.name, r.id]}, (@album.products.map{|p| p.id})), {}, {:multiple => true}  %>
+			   	</div>    
+			
+			  <div class="actions">
+			    <%= f.submit %>
+			  </div>
+			<% end %>
+		</td>
+		<td width="80%">
+
+				<h1>Listing album_products - <%= @album.name %></h1>
+				
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th>Name</th>
+				      <th>Code</th>
+				      <th>Photo</th>
+				    </tr>
+				  </thead>
+				
+				  <tbody>
+				    <% @album_products.each do |album_product| %>
+				      <tr>
+				        <td><%= album_product.product.name %></td>
+				        <td><%= album_product.product.code %></td>
+				        <td><%= image_tag(album_product.product.photo_url_small, :alt => "photo") %></td>
+				        <td><%= link_to 'Destroy', [:company_admin, @album, album_product], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+				<%= will_paginate @album_products %>
+		</td>	
+	</tr>
+</table>				
+				

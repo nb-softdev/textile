@@ -1,0 +1,33 @@
+<h1>Listing albums</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Code</th>
+      <th>Is active</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.name %></td>
+        <td><%= album.description %></td>
+        <td><%= album.code %></td>
+        <td><%= album.is_active %></td>
+        <th><%= link_to 'Products', company_admin_album_album_products_path(album) %></th>
+        <td><%= link_to 'Show', [:company_admin, album] %></td>
+        <td><%= link_to 'Edit', edit_company_admin_album_path(album) %></td>
+        <td><%= link_to 'Destroy', [:company_admin, album], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @album_products %>
+<%= link_to 'New Album', new_company_admin_album_path %>

@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   has_attached_file :photo,
   styles: {
     thumb: "400x",
-    small: "200x"
+    small: "100x100",
     original: "100%"
   }
   
