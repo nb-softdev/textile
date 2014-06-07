@@ -34,85 +34,22 @@
 			</section>
 			
 		<!-- Work -->
-			<section id="work" class="main style3 primary">
+			<section id="work" class="main style3 primary pad1em">
+				<%= render "albums" %>
+				<a href="#work_types" class="button style2 down anchored">Next</a>
+			</section>
+			
+			<!-- Albums -->
+			<section id="work_types" class="main style3 primary">
 				<div class="content container">
 					<header>
 						<h2><%= @current_company.my_work_label %></h2>
-						<p><strong><%= @work_types %></strong></p>
+						<ul>
+						<% @current_company.work_types.each do |work_type| %>
+							<li><strong><%= work_type.name.to_s %></strong></li>
+						<% end %>
+						</ul>
 					</header>
-					
-					<!--
-						 Lightbox Gallery
-						 
-						 Powered by poptrox. Full docs here: https://github.com/n33/jquery.poptrox
-					-->
-						<div class="container small gallery">
-							
-							<% i = 0 %>
-							<% j = 0 %>
-							<% @current_company.products.limit(9).each do |product| %>
-								<% if i == 0 or i%3==0 %>
-									<div class="row flush images">
-										<% j = j + 1 %>
-								<% end %>		
-									<div class="4u custom4u">
-										<% if product.photo.present? %>
-											<a href="<%= product.photo_url_original %>" class="image full l">
-												<%= image_tag(product.photo_url_original, :title => product.name, :alt => "") %>
-											</a>	
-										<% else %>
-											<a href="images/fulls/01.jpg" class="image full l">
-												<img src="images/thumbs/01.jpg" title="<%= product.name.name %>" alt="" />
-											</a>	
-										<% end %>
-									</div>
-								<% if i != 0 and (i+2)%4==0 %>
-									<% j = 0 %>
-									</div>
-								<% end %>
-								<% i = i + 1 %>	
-							<% end %>	
-						</div>
-				</div>
-			</section>
-			<!-- Albums -->
-			<section id="albums" class="main style3 primary">
-				<div class="content container">
-					<header>
-						<h2>Albums</h2>
-					</header>
-					<!--
-						 Lightbox Gallery
-						 Powered by poptrox. Full docs here: https://github.com/n33/jquery.poptrox
-					-->
-						<div class="container small gallery">
-							
-							<% i = 0 %>
-							<% j = 0 %>
-							<% @current_company.products.limit(9).each do |product| %>
-								<% if i == 0 or i%3==0 %>
-									<div class="row flush images">
-										<% j = j + 1 %>
-								<% end %>		
-									<div class="4u custom4u">
-										<% if product.photo.present? %>
-											<a href="<%= product.photo_url_original %>" class="image full l">
-												<%= image_tag(product.photo_url_original, :title => product.name, :alt => "") %>
-											</a>	
-										<% else %>
-											<a href="images/fulls/01.jpg" class="image full l">
-												<img src="images/thumbs/01.jpg" title="<%= product.name.name %>" alt="" />
-											</a>	
-										<% end %>
-									</div>
-								<% if i != 0 and (i+2)%4==0 %>
-									<% j = 0 %>
-									</div>
-								<% end %>
-								<% i = i + 1 %>	
-							<% end %>	
-						</div>
-				</div>
 				<a href="#contact" class="button style2 down anchored">Next</a>
 			</section>			
 		<!-- Contact -->

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         resources :album_products
       end      
     end
+    get '/photos/:type/:id' => 'home#photos', :as => :photos
   end
   
   get '/company_not_found' => 'no_company#company_not_found', :as => :company_not_found

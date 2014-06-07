@@ -1,0 +1,36 @@
+<%#= javascript_include_tag 'company/application', 'data-turbolinks-track' => true %>
+<header>
+	<h2><%= @album_or_category ? @album_or_category.name : "Albums" %></h2>
+</header>
+<!--
+	 Lightbox Gallery
+	 Powered by poptrox. Full docs here: https://github.com/n33/jquery.poptrox
+-->
+<div class="container small gallery">
+
+		<% i = 0 %>
+		<% j = 0 %>
+		<% photos.limit(9).each do |product| %>
+			<% if i == 0 or i%3==0 %>
+				<div class="row flush images">
+					<% j = j + 1 %>
+			<% end %>		
+				<div class="4u custom4u">
+					<% if product.photo.present? %>
+						<a href="<%= product.photo_url_original %>" class="image full l">
+							<%= image_tag(product.photo_url_original, :title => product.name, :alt => "") %>
+						</a>	
+					<% else %>
+						<a href="images/fulls/01.jpg" class="image full l">
+							<img src="images/thumbs/01.jpg" title="<%= product.name %>" alt="" />
+						</a>	
+					<% end %>
+				</div>
+			<% if i != 0 and (i+2)%4==0 %>
+				<% j = 0 %>
+				</div>
+			<% end %>
+			<% i = i + 1 %>	
+		<% end %>	
+		
+</div>

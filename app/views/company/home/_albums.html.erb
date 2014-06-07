@@ -1,0 +1,30 @@
+<table class="table">
+	<tr>
+	<td width="20%" class="left">
+		<ul>
+			<% @current_company.albums.each do |album| %>
+				<li>
+					<strong><%= link_to album.name, company_photos_path("album", album.id), :remote => true %></strong>
+				</li>
+			<% end %>
+		</ul>		
+	</td>
+	<td width="60%">
+		<div class="content">
+			<div id="album_id">
+				<%= render "photos", photos: @current_company.products %>
+			</div>	
+		</div>
+		
+	</td>
+	<td width="20%" class="right">
+		<ul>
+			<% @current_company.categories.group("name").each do |category| %>
+				<li>
+					<strong><%= link_to category.name, company_photos_path("category", category.id), :remote => true %></strong>
+				</li>
+			<% end %>
+		</ul>	
+	</td>
+	</tr>
+</table>
