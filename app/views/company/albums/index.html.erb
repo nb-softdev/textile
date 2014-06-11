@@ -1,2 +1,82 @@
-<h1>Listing albums</h1>
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content container small">
+					<header>
+						<h2><%= @current_company.name %>.</h2>
+					</header>
+					<p>Welcome to <strong><%= @current_company.name %></strong> <%= @current_company.description %></p>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+		
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2><%= @current_company.what_i_do_label %></h2>
+					</header>
+					<p><%= @current_company.what_i_do_desc %></p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+		
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2><%= @current_company.who_i_am_label %></h2>
+					</header>
+					<p><%= @current_company.who_i_am_desc %></p>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+			
+		<!-- Work -->
+			<section id="work" class="main style3 primary pad1em">
+				<%= render "albums" %>
+				<a href="#work_types" class="button style2 down anchored">Next</a>
+			</section>
+			
+			<!-- Albums -->
+			<section id="work_types" class="main style3 primary">
+				<div class="content container">
+					<header>
+						<h2><%= @current_company.my_work_label %></h2>
+						<ul>
+						<% @current_company.work_types.each do |work_type| %>
+							<li><strong><%= work_type.name.to_s %></strong></li>
+						<% end %>
+						</ul>
+					</header>
+				<a href="#contact" class="button style2 down anchored">Next</a>
+			</section>			
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
+				<div class="content container">
+					<header>
+						<h2>Contact Us</h2>
+						<p>
+							<%= company_address %>
+						</p>
+						<p>
+							Contact Person: <%= @current_company.contact_person %><br />
+							Mobile: <%= company_mobiles %><br />
+							Phone: <%= company_phones %>							
+						</p>						
+					</header>
+					<div class="box container small">
+					
+						<!--
+							 Contact Form
+							 
+							 To get this working, place a script on your server to receive the form data, then
+							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
+							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
+						-->
+							<%= render "home/contact_us"%>
 
+					</div>
+				</div>
+			</section>

@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require home/skel.min
-//= require home/jquery.poptrox.min
-//= require home/init
+//= require jquery.prettyPhoto
+//= require skel.min
+//= require init

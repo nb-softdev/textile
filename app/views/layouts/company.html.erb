@@ -6,11 +6,11 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Textile" %>">
-    <%#= stylesheet_link_tag 'home/application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'company/application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'company/application', 'data-turbolinks-track' => true %>
 		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="/assets/company/skel-noscript.css" />
+			<link rel="stylesheet" href="/assets/company/style.css" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->    
     <%= csrf_meta_tags %>

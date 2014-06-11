@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   
   namespace :company do
-    resources :albums
+		resources :albums
     namespace :admin do
       resources :contact_us, :products, :companies
       get '/home' => 'home#index', :as => :home
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     end
     get '/photos/:type/:id' => 'home#photos', :as => :photos
   end
+  
+  #get '/albums' => 'company/albums#index', :as => :albums
   
   get '/company_not_found' => 'no_company#company_not_found', :as => :company_not_found
   post '/contact_us_save' => 'home#contact_us_save', :as => :contact_us_save
