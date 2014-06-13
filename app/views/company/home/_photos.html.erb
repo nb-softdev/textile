@@ -1,31 +1,31 @@
 <header>
-	<h2><%= @album_or_category ? @album_or_category.name : "Products" %></h2>
+	<h3><%= @album_or_category ? @album_or_category.name : "Products" %></h3>
 </header>
 <!--
 	 Lightbox Gallery
 	 Powered by poptrox. Full docs here: https://github.com/n33/jquery.poptrox
 -->
-<div class="container small albums clearfix">
+<div class="container small albums clearfix ml32">
 
 		<% i = 0 %>
 		<% j = 0 %>
-		<% photos.limit(9).each do |product| %>
-			<% if i == 0 or i%3==0 %>
+		<% photos.limit(18).each do |product| %>
+			<% if i == 0 or i%6==0 %>
 				<div class="row flush images">
 					<% j = j + 1 %>
 			<% end %>		
 				<div class="4u custom4u">
 					<% if product.photo.present? %>
-						<a href="<%= product.photo_url_original %>" class="image full l" rel="prettyPhoto[gallery2]">
-							<%= image_tag(product.photo_url_original, :title => product.name, :alt => "") %>
+						<a href="<%= product.photo_url_original %>" class="image full l" rel="prettyPhoto[gallery2]" title="<%= product.name %>">
+							<%= image_tag(product.photo_url_small, :title => product.name, :alt => "") %>
 						</a>	
 					<% else %>
-						<a href="images/fulls/01.jpg" class="image full l" rel="prettyPhoto[gallery2]">
+						<a href="images/fulls/01.jpg" class="image full l" rel="prettyPhoto[gallery2]" title="<%= product.name %>">
 							<img src="images/thumbs/01.jpg" title="<%= product.name %>" alt="" />
 						</a>	
 					<% end %>
 				</div>
-			<% if i != 0 and (i+2)%4==0 %>
+			<% if i != 0 and (i+2)%7==0 %>
 				<% j = 0 %>
 				</div>
 			<% end %>
@@ -37,6 +37,18 @@
 	
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
-		$(".albums:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: false});
+		$(".albums:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast'
+																									,theme:'light_rounded',
+																									slideshow:3000, 
+																									autoplay_slideshow: false,
+																									show_title: true,
+																									allow_resize: true,
+																									default_width: 500,
+																									default_height: 344,
+																									hideflash: false,
+																									overlay_gallery: true,
+																									social_tools: false,
+																									custom_markup: ''
+																									});
 	});
 </script>

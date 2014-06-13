@@ -1,29 +1,29 @@
 <table class="table">
 	<tr>
-	<td width="20%" class="left">
+	<td width="20%" class="left album-sidebar">
 		<ul>
 			<li><h3>Albums</h3></li>
 			<% @current_company.albums.each do |album| %>
 				<li>
-					<strong><%= link_to album.name, company_photos_path("album", album.id), :remote => true %></strong>
+					<strong><%= link_to "#{album.name} (#{album.products.count})", company_photos_path("album", album.id), :remote => true %></strong>
 				</li>
 			<% end %>
 		</ul>		
 	</td>
 	<td width="60%">
-		<div class="content">
+		<div class="content album-middel">
 			<div id="album_id">
 				<%= render "photos", photos: @current_company.products %>
 			</div>	
 		</div>
 		
 	</td>
-	<td width="20%" class="right">
+	<td width="20%" class="right album-sidebar">
 		<ul>
 			<li><h3>Our Work</h3></li>
 			<% @current_company.categories.group("name").each do |category| %>
 				<li>
-					<strong><%= link_to category.name, company_photos_path("category", category.id), :remote => true %></strong>
+					<strong><%= link_to "#{category.name} (#{category.products.where(:company_id => @current_company.id).count})", company_photos_path("category", category.id), :remote => true %></strong>
 				</li>
 			<% end %>
 		</ul>	
