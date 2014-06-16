@@ -1,7 +1,10 @@
 <table class="table">
 	<tr>
 	<td width="20%" class="left album-sidebar">
-		<ul>
+		<ul style="font-size:  <%= @current_company_layout.album_description_font_size %>px;
+									font-family:  <%= @current_company_layout.album_description_font_family %>;
+									color:  <%= @current_company_layout.album_description_font_color %>;
+											    ">
 			<li><h3>Albums</h3></li>
 			<% @current_company.albums.each do |album| %>
 				<li>
@@ -19,7 +22,10 @@
 		
 	</td>
 	<td width="20%" class="right album-sidebar">
-		<ul>
+		<ul style="font-size:  <%= @current_company_layout.album_description_font_size %>px;
+									font-family:  <%= @current_company_layout.album_description_font_family %>;
+									color:  <%= @current_company_layout.album_description_font_color %>;
+											    ">
 			<li><h3>Our Work</h3></li>
 			<% @current_company.categories.group("name").each do |category| %>
 				<li>

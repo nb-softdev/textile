@@ -7,6 +7,8 @@ class Company < ActiveRecord::Base
   
   has_many :contact_us, class_name: 'ContactUs' 
   
+  has_one :layout, class_name: 'CompanyLayout'
+  
   #accepts_nested_attributes_for :company_work_types
   
   has_many :products, dependent: :destroy

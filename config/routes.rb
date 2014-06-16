@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :company_layouts
+  end
+
   get '/' => 'company/home#index', :constraints => { :subdomain => /.+/ }
   constraints DomainConstraint.new('textile.com') do
     root :to => 'home#index', :as => :home
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
   
   get '/admin' => 'admin/home#index', :as => :admin_home
   namespace :admin do
-    resources :categories, :markets, :work_types, :contact_us, :products, :companies, :users
+    resources :categories, :markets, :work_types, :contact_us, :products, :companies, :users, :company_layouts
     resources :albums do
       resources :album_products
     end
@@ -27,7 +31,7 @@ Rails.application.routes.draw do
   namespace :company do
 		resources :albums
     namespace :admin do
-      resources :contact_us, :products, :companies
+      resources :contact_us, :products, :companies, :company_layouts
       get '/home' => 'home#index', :as => :home
       resources :company_work_types do
         get :autocomplete_work_type_name, :on => :collection

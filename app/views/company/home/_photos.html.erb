@@ -1,5 +1,8 @@
 <header>
-	<h3><%= @album_or_category ? @album_or_category.name : "Products" %></h3>
+	<h3 style="font-size:  <%= @current_company_layout.album_name_font_size %>px;
+									font-family:  <%= @current_company_layout.album_name_font_family %>;
+									color:  <%= @current_company_layout.album_name_font_color %>;
+											    "><%= @album_or_category ? @album_or_category.name : "Products" %></h3>
 </header>
 <!--
 	 Lightbox Gallery
