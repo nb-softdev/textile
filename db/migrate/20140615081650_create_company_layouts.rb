@@ -3,13 +3,11 @@ class CreateCompanyLayouts < ActiveRecord::Migration
     create_table :company_layouts do |t|
       t.integer :company_id
       t.string :header_background_color
-      t.string :home_background_color
-      t.string :what_i_do_background_color
-      t.string :who_i_am_background_color
+      t.string :header_text_background_color
       t.string :album_background_color
-      t.string :my_work_background_color
       t.string :contact_us_background_color
       t.string :footer_background_color
+      
       t.string :header_font_color
       t.string :home_name_font_color
       t.string :home_description_font_color
@@ -24,6 +22,7 @@ class CreateCompanyLayouts < ActiveRecord::Migration
       t.string :contact_us_name_font_color
       t.string :contact_us_description_font_color
       t.string :footer_font_color
+      
       t.string :header_font
       t.string :home_name_font
       t.string :home_description_font

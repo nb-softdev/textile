@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615081650) do
+ActiveRecord::Schema.define(version: 20140617180956) do
 
   create_table "album_products", force: true do |t|
     t.integer  "album_id"
@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20140615081650) do
   create_table "company_layouts", force: true do |t|
     t.integer  "company_id"
     t.string   "header_background_color"
-    t.string   "home_background_color"
+    t.string   "header_text_background_color"
     t.string   "what_i_do_background_color"
     t.string   "who_i_am_background_color"
-    t.string   "album_background_color"
     t.string   "my_work_background_color"
+    t.string   "album_background_color"
     t.string   "contact_us_background_color"
     t.string   "footer_background_color"
     t.string   "header_font_color"
@@ -136,6 +136,22 @@ ActiveRecord::Schema.define(version: 20140615081650) do
     t.string   "footer_font_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "front_background1_file_name"
+    t.string   "front_background1_content_type"
+    t.integer  "front_background1_file_size"
+    t.datetime "front_background1_updated_at"
+    t.string   "front_background2_file_name"
+    t.string   "front_background2_content_type"
+    t.integer  "front_background2_file_size"
+    t.datetime "front_background2_updated_at"
+    t.string   "front_background3_file_name"
+    t.string   "front_background3_content_type"
+    t.integer  "front_background3_file_size"
+    t.datetime "front_background3_updated_at"
+    t.string   "front_background4_file_name"
+    t.string   "front_background4_content_type"
+    t.integer  "front_background4_file_size"
+    t.datetime "front_background4_updated_at"
   end
 
   create_table "company_users", force: true do |t|

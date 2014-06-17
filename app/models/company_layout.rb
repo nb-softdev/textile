@@ -1,8 +1,8 @@
 class CompanyLayout < ActiveRecord::Base
   belongs_to :company
   
-  validates_presence_of  :company_id,:header_background_color,:home_background_color,:what_i_do_background_color,:who_i_am_background_color,
-                                            :album_background_color,:my_work_background_color,:contact_us_background_color,:footer_background_color,:header_font_color,
+  validates_presence_of  :company_id,:header_background_color,
+                                            :album_background_color,:contact_us_background_color,:footer_background_color,:header_font_color,
                                             :home_name_font_color,:home_description_font_color,:what_i_do_name_font_color,:what_i_do_description_font_color,
                                             :who_i_am_name_font_color,:who_i_am_description_font_color,:album_name_font_color,:album_description_font_color,
                                             :my_work_name_font_color,:my_work_description_font_color,:contact_us_name_font_color,:contact_us_description_font_color,
@@ -12,5 +12,37 @@ class CompanyLayout < ActiveRecord::Base
                                             :home_name_font_size,:home_description_font_size,:what_i_do_name_font_size,:what_i_do_description_font_size,
                                             :who_i_am_name_font_size,:who_i_am_description_font_size,:album_name_font_size,:album_description_font_size,
                                             :my_work_name_font_size,:my_work_description_font_size,:contact_us_name_font_size,:contact_us_description_font_size,
-                                            :footer_font_size
+                                            :footer_font_size, :header_text_background_color, :what_i_do_background_color, :who_i_am_background_color, :my_work_background_color
+                                            
+                                            
+  has_attached_file :front_background1, styles: {large: "1350X655!"}
+  has_attached_file :front_background2, styles: {large: "1350X655!"}
+  has_attached_file :front_background3, styles: {large: "1350X655!"}
+  has_attached_file :front_background4, styles: {large: "1350X655!"}
+  
+  validates_attachment_content_type :front_background1, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
+  validates_attachment_content_type :front_background2, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
+  validates_attachment_content_type :front_background3, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
+  validates_attachment_content_type :front_background4, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
+
+  validates_attachment_size :front_background1, :less_than => 2.megabytes  
+  validates_attachment_size :front_background2, :less_than => 2.megabytes
+  validates_attachment_size :front_background3, :less_than => 2.megabytes
+  validates_attachment_size :front_background4, :less_than => 2.megabytes
+  
+  def front_background1_url
+    front_background1.url(:large)
+  end
+  
+  def front_background2_url
+    front_background2.url(:large)
+  end
+  
+  def front_background3_url
+    front_background3.url(:large)
+  end
+  
+  def front_background4_url
+    front_background4.url(:large)
+  end
 end

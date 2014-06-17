@@ -1,6 +1,5 @@
 <!-- Header -->
 <header id="header" style="background: <%= @current_company_layout.header_background_color %>;
-												font-size:  <%= @current_company_layout.header_font_size %>em;
 											    font-family:  <%= @current_company_layout.header_font_family %>;
 											    color:  <%= @current_company_layout.header_font_color %>;
 											    ">
@@ -14,19 +13,19 @@
 		</h1>
 	<!-- Nav -->
 		<nav id="nav">
-			<ul>
-				<li><a href="#intro">Home</a></li>
-				<li><a href="#one"><%= @current_company.what_i_do_label %></a></li>
-				<li><a href="#two"><%= @current_company.who_i_am_label %></a></li>
-				<li><a href="#work">Albums</a></li>
-				<li><a href="#work_types"><%= @current_company.my_work_label %></a></li>
-				<li><a href="#contact">Contact</a></li>
+			<ul style="font-size:  <%= @current_company_layout.header_font_size %>;">
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#intro">Home</a></li>
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#one"><%= @current_company.what_i_do_label %></a></li>
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#two"><%= @current_company.who_i_am_label %></a></li>
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#work_types"><%= @current_company.my_work_label %></a></li>
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#work">Albums</a></li>
+				<li style="background: <%= @current_company_layout.header_text_background_color %>;"><a href="#contact">Contact</a></li>
 				<!--<li><%= link_to 'Albums', company_albums_path %></li>-->
 				<% if user_signed_in? %>
-					<li><%= link_to 'Admin Area', company_admin_home_path, class: 'navbar-brand' %></li>
-				  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+					<li style="background: <%= @current_company_layout.header_text_background_color %>;"><%= link_to 'Admin Area', company_admin_home_path, class: 'navbar-brand' %></li>
+				  <li style="background: <%= @current_company_layout.header_text_background_color %>;"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 				<% else %>
-				  <li><%= link_to 'Sign in', new_user_session_path %></li>
+				  <li style="background: <%= @current_company_layout.header_text_background_color %>;"><%= link_to 'Sign in', new_user_session_path %></li>
 				<% end %>								
 			</ul>
 		</nav>
