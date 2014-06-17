@@ -3,7 +3,7 @@ class Company::CompanyApplicationController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :company_subdomain, :current_company
+  before_action  :current_company, :company_subdomain
   helper_method :company_address, :company_mobiles, :company_phones, :current_company
 
   layout 'company'
@@ -38,7 +38,9 @@ class Company::CompanyApplicationController < ApplicationController
   end  
   
   def company_subdomain
-    if current_subdomain and current_company.nil?
+    puts '-----------------------------------------------------------------------------------------'
+    puts @current_company.inspect
+    if current_subdomain and @current_company.nil?
         redirect_to company_not_found_path
     end
   end  

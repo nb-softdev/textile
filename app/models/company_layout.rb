@@ -10,8 +10,8 @@ class CompanyLayout < ActiveRecord::Base
                                             :who_i_am_name_font,:who_i_am_description_font,:album_name_font,:album_description_font,:my_work_name_font,
                                             :my_work_description_font,:contact_us_name_font,:contact_us_description_font,:footer_font,:header_font_size,
                                             :home_name_font_size,:home_description_font_size,:what_i_do_name_font_size,:what_i_do_description_font_size,
-                                            :who_i_am_name_font_size,:who_i_am_description_font_size,:album_name_font_size,:album_description_font_size,
-                                            :my_work_name_font_size,:my_work_description_font_size,:contact_us_name_font_size,:contact_us_description_font_size,
+                                            :who_i_am_name_font_size,:who_i_am_description_font_size,:album_name_font_size,:album_description_font_size,:album_sidebar_background_color,
+                                            :my_work_name_font_size,:my_work_description_font_size,:contact_us_name_font_size,:contact_us_description_font_size, :home_background_color,
                                             :footer_font_size, :header_text_background_color, :what_i_do_background_color, :who_i_am_background_color, :my_work_background_color
                                             
                                             

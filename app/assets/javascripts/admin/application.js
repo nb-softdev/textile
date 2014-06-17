@@ -16,3 +16,6 @@
 //= require autocomplete-rails
 //= require turbolinks
 //= require bootstrap
+//= require jquery.minicolors
+
+ 

@@ -13,28 +13,33 @@
 
   <div class="field">
       <%= f.label :header_background_color %><br>
-    <%= f.text_field :header_background_color %>
+    <%= f.text_field :header_background_color, :class => "mini_color" %>
     </div>
 
   <div class="field">
       <%= f.label :header_text_background_color %><br>
-    <%= f.text_field :header_text_background_color %>
+    <%= f.text_field :header_text_background_color, :class => "mini_color" %>
     </div>
-
+    
+  <div class="field">
+      <%= f.label :home_background_color %><br>
+    <%= f.text_field :home_background_color, :class => "mini_color" %>
+    </div>    
+    
   <div class="field">
       <%= f.label :what_i_do_background_color %><br>
-    <%= f.text_field :what_i_do_background_color %>
+    <%= f.text_field :what_i_do_background_color, :class => "mini_color" %>
     </div>
     
   <div class="field">
       <%= f.label :who_i_am_background_color %><br>
-    <%= f.text_field :who_i_am_background_color %>
+    <%= f.text_field :who_i_am_background_color, :class => "mini_color" %>
     </div>
     
   <div class="field">
       <%= f.label :my_work_background_color %><br>
-    <%= f.text_field :my_work_background_color %>
-    </div>   
+    <%= f.text_field :my_work_background_color, :class => "mini_color" %>
+    </div>            
 
   <div class="form-group">
       <%= f.label :front_background1 %>
@@ -59,72 +64,78 @@
 
   <div class="field">
       <%= f.label :album_background_color %><br>
-    <%= f.text_field :album_background_color %>
+    <%= f.text_field :album_background_color, :class => "mini_color" %>
     </div>
+    
+  <div class="field">
+      <%= f.label :album_sidebar_background_color %><br>
+    <%= f.text_field :album_sidebar_background_color, :class => "mini_color" %>
+    </div>    
+    
 
   <div class="field">
       <%= f.label :contact_us_background_color %><br>
-    <%= f.text_field :contact_us_background_color %>
+    <%= f.text_field :contact_us_background_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :footer_background_color %><br>
-    <%= f.text_field :footer_background_color %>
+    <%= f.text_field :footer_background_color, :class => "mini_color"%>
     </div>
   <div class="field">
       <%= f.label :header_font_color %><br>
-    <%= f.text_field :header_font_color %>
+    <%= f.text_field :header_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :home_name_font_color %><br>
-    <%= f.text_field :home_name_font_color %>
+    <%= f.text_field :home_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :home_description_font_color %><br>
-    <%= f.text_field :home_description_font_color %>
+    <%= f.text_field :home_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_name_font_color %><br>
-    <%= f.text_field :what_i_do_name_font_color %>
+    <%= f.text_field :what_i_do_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_description_font_color %><br>
-    <%= f.text_field :what_i_do_description_font_color %>
+    <%= f.text_field :what_i_do_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_name_font_color %><br>
-    <%= f.text_field :who_i_am_name_font_color %>
+    <%= f.text_field :who_i_am_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_description_font_color %><br>
-    <%= f.text_field :who_i_am_description_font_color %>
+    <%= f.text_field :who_i_am_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :album_name_font_color %><br>
-    <%= f.text_field :album_name_font_color %>
+    <%= f.text_field :album_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :album_description_font_color %><br>
-    <%= f.text_field :album_description_font_color %>
+    <%= f.text_field :album_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :my_work_name_font_color %><br>
-    <%= f.text_field :my_work_name_font_color %>
+    <%= f.text_field :my_work_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :my_work_description_font_color %><br>
-    <%= f.text_field :my_work_description_font_color %>
+    <%= f.text_field :my_work_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :contact_us_name_font_color %><br>
-    <%= f.text_field :contact_us_name_font_color %>
+    <%= f.text_field :contact_us_name_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :contact_us_description_font_color %><br>
-    <%= f.text_field :contact_us_description_font_color %>
+    <%= f.text_field :contact_us_description_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :footer_font_color %><br>
-    <%= f.text_field :footer_font_color %>
+    <%= f.text_field :footer_font_color, :class => "mini_color" %>
     </div>
   <div class="field">
       <%= f.label :header_font %><br>
@@ -301,3 +312,17 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		$('.mini_color').minicolors({
+					control: $(this).attr('data-control') || 'wheel',
+					defaultValue: $(this).attr('data-defaultValue') || '',
+					inline: $(this).attr('data-inline') === 'true',
+					letterCase: $(this).attr('data-letterCase') || 'lowercase',
+					opacity: $(this).attr('data-opacity'),
+					position: $(this).attr('data-position') || 'bottom left',
+					theme: 'bootstrap'
+				});
+	});
+</script>

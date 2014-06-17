@@ -1,16 +1,20 @@
 <!-- Intro -->
-	<section id="intro" class="main style1 dark fullscreen" style="background: url('/assets/sarees1.jpeg');">
+	<section id="intro" class="main style1 dark fullscreen" style="background: url('<%= @current_company_layout.front_background1_url %>');">
 		<div class="content container small">
-			<header>
-				<h2 style="font-size:  <%= @current_company_layout.home_name_font_size %>px;
-									font-family:  <%= @current_company_layout.home_name_font_family %>;
-									color:  <%= @current_company_layout.home_name_font_color %>;
-											    "><%= @current_company.name %>.</h2>
-			</header>
-			<p style="font-size:  <%= @current_company_layout.home_description_font_size %>px;
-									font-family:  <%= @current_company_layout.home_description_font_family %>;
-									color:  <%= @current_company_layout.home_description_font_color %>;
-											    ">Welcome to <strong><%= @current_company.name %></strong> <%= @current_company.description %></p>
+			<div style="background: <%= @current_company_layout.home_background_color %>;padding: 10px 0 10px 0;">
+				<header>
+					<h2 style="font-size:  <%= @current_company_layout.home_name_font_size %>;
+										font-family:  <%= @current_company_layout.home_name_font_family %>;
+										color:  <%= @current_company_layout.home_name_font_color %>;
+										font-style:  <%= @current_company_layout.home_name_font %>;
+												    "><%= @current_company.name %>.</h2>
+				</header>
+				<p style="font-size:  <%= @current_company_layout.home_description_font_size %>;
+										font-family:  <%= @current_company_layout.home_description_font_family %>;
+										color:  <%= @current_company_layout.home_description_font_color %>;
+										font-style:  <%= @current_company_layout.home_description_font %>;
+												    ">Welcome to <strong><%= @current_company.name %></strong> <%= @current_company.description %></p>
+			</div>									    
 			<footer>
 				<a href="#one" class="button style2 down">More</a>
 			</footer>
@@ -21,14 +25,16 @@
 	<section id="one" class="main style2 right dark fullscreen"  style="background: url('<%= @current_company_layout.front_background2_url %>');">
 		<div class="content box style2" style="background: <%= @current_company_layout.what_i_do_background_color %>">
 			<header>
-				<h2 style="font-size:  <%= @current_company_layout.what_i_do_name_font_size %>px;
+				<h2 style="font-size:  <%= @current_company_layout.what_i_do_name_font_size %>;
 									font-family:  <%= @current_company_layout.what_i_do_name_font_family %>;
 									color:  <%= @current_company_layout.what_i_do_name_font_color %>;
+									font-style:  <%= @current_company_layout.what_i_do_name_font %>;
 											    "><%= @current_company.what_i_do_label %></h2>
 			</header>
-			<p style="font-size:  <%= @current_company_layout.what_i_do_description_font_size %>px;
+			<p style="font-size:  <%= @current_company_layout.what_i_do_description_font_size %>;
 									font-family:  <%= @current_company_layout.what_i_do_description_font_family %>;
 									color:  <%= @current_company_layout.what_i_do_description_font_color %>;
+									font-style:  <%= @current_company_layout.what_i_do_description_font %>;
 											    "><%= @current_company.what_i_do_desc %></p>
 		</div>
 		<a href="#two" class="button style2 down anchored">Next</a>
@@ -38,14 +44,16 @@
 	<section id="two" class="main style2 left dark fullscreen"  style="background: url('<%= @current_company_layout.front_background3_url %>');">
 		<div class="content box style2" style="background: <%= @current_company_layout.who_i_am_background_color %>">
 			<header>
-				<h2 style="font-size:  <%= @current_company_layout.who_i_am_name_font_size %>px;
+				<h2 style="font-size:  <%= @current_company_layout.who_i_am_name_font_size %>;
 									font-family:  <%= @current_company_layout.who_i_am_name_font_family %>;
 									color:  <%= @current_company_layout.who_i_am_name_font_color %>;
+									font-style:  <%= @current_company_layout.who_i_am_name_font %>;
 											    "><%= @current_company.who_i_am_label %></h2>
 			</header>
-			<p style="font-size:  <%= @current_company_layout.who_i_am_description_font_size %>px;
+			<p style="font-size:  <%= @current_company_layout.who_i_am_description_font_size %>;
 									font-family:  <%= @current_company_layout.who_i_am_description_font_family %>;
 									color:  <%= @current_company_layout.who_i_am_description_font_color %>;
+									font-style:  <%= @current_company_layout.who_i_am_description_font %>;
 											    "><%= @current_company.who_i_am_desc %></p>
 		</div>
 		<a href="#work_types" class="button style2 down anchored">Next</a>
@@ -56,14 +64,16 @@
 	<section id="work_types" class="main style2 right dark fullscreen"  style="background: url('<%= @current_company_layout.front_background4_url %>');">
 		<div class="content box style2" style="background: <%= @current_company_layout.my_work_background_color %>">
 			<header>
-				<h2 style="font-size:  <%= @current_company_layout.my_work_name_font_size %>px;
+				<h2 style="font-size:  <%= @current_company_layout.my_work_name_font_size %>;
 									font-family:  <%= @current_company_layout.my_work_name_font_family %>;
 									color:  <%= @current_company_layout.my_work_name_font_color %>;
+									font-style:  <%= @current_company_layout.my_work_name_font %>;
 											    "><%= @current_company.my_work_label %></h2>
 			</header>
-				<ul style="font-size:  <%= @current_company_layout.my_work_description_font_size %>px;
+				<ul style="font-size:  <%= @current_company_layout.my_work_description_font_size %>;
 									font-family:  <%= @current_company_layout.my_work_description_font_family %>;
 									color:  <%= @current_company_layout.my_work_description_font_color %>;
+									font-style:  <%= @current_company_layout.my_work_description_font %>;
 											    ">
 				<% @current_company.work_types.each do |work_type| %>
 					<li><strong><%= work_type.name.to_s %></strong></li>
@@ -87,13 +97,15 @@
 	<section id="contact" class="main style3 secondary" style="background: <%= @current_company_layout.contact_us_background_color %>">
 		<div class="content container">
 			<header>
-				<h2 style="font-size:  <%= @current_company_layout.contact_us_name_font_size %>px;
+				<h2 style="font-size:  <%= @current_company_layout.contact_us_name_font_size %>;
 									font-family:  <%= @current_company_layout.contact_us_name_font_family %>;
 									color:  <%= @current_company_layout.contact_us_name_font_color %>;
+									font-style:  <%= @current_company_layout.contact_us_name_font %>;
 											    ">Contact Us</h2>
-				<p style="font-size:  <%= @current_company_layout.contact_us_description_font_size %>px;
+				<p style="font-size:  <%= @current_company_layout.contact_us_description_font_size %>;
 									font-family:  <%= @current_company_layout.contact_us_description_font_family %>;
 									color:  <%= @current_company_layout.contact_us_description_font_color %>;
+									font-style:  <%= @current_company_layout.contact_us_description_font %>;
 											    ">
 					<%= company_address %><br /><br />
 					Contact Person: <%= @current_company.contact_person %><br />

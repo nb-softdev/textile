@@ -57,6 +57,9 @@ gem 'paperclip', '~> 4.1'
 # Subdomain manipulation
 gem 'subdomain-fu', :git => 'https://github.com/mbleigh/subdomain-fu.git'
 
+#jquery-minicolors-rails
+gem 'jquery-minicolors-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

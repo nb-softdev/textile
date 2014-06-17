@@ -1443,15 +1443,12 @@
 
 
 	.album-sidebar {
-	    background: none repeat scroll 0 0 #666666;
-	    color: #EEEEEE;
 	    font-family: sans-serif;
 	    font-size: 15px;
 	    padding: 0 5px 0 5px;		
 	}
 
 	.album-middel {
- 		background: none repeat scroll 0 0 #333333;
 	}
 	
     .album-middel h3 {
