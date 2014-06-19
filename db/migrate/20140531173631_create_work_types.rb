@@ -4,6 +4,7 @@ class CreateWorkTypes < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.boolean :is_active, :default => true
+      t.boolean :is_default, :default => false
 
       t.timestamps
     end

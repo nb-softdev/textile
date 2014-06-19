@@ -14,6 +14,11 @@ company.save
 puts 'CREATED COMPANY:'
 puts '------------------------------------------'
 
+company_layout = CompanyLayout.find_or_create_by(company_id: company.id)
+puts company_layout.inspect
+puts 'CREATED COMPANY LAYOUT:'
+puts '------------------------------------------'
+
 user1 = User.find_or_create_by!(email: $user_email) do |user|
   user.password = $user_password
   user.password_confirmation = $user_password

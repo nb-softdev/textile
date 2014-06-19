@@ -5,6 +5,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :sub_domain
+      t.string :custom_domain
       t.string :contact_person
       t.string :mobile_1
       t.string :mobile_2

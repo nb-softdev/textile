@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Company</th>
+      <th>Theme</th>
       <th></th>
       <th></th>
       <th></th>
@@ -13,8 +14,8 @@
   <tbody>
     <% @company_layouts.each do |company_layout| %>
       <tr>
-        <td><%= company_layout.company.name %></td>
-
+        <td><%= company_layout.company.name if company_layout.company %></td>
+		<td><%= company_layout.theme_name %></td>
         <td><%= link_to 'Show', [:admin, company_layout] %></td>
         <td><%= link_to 'Edit', edit_admin_company_layout_path(company_layout) %></td>
         <td><%= link_to 'Destroy', [:admin, company_layout], method: :delete, data: { confirm: 'Are you sure?' } %></td>

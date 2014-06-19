@@ -6,11 +6,20 @@
 											    ">
 	<!-- Logo -->
 		<h1 id="logo">
-			<% if @current_company.logo %>
-				<%= image_tag(@current_company.logo_url) %>
+			<% if @current_company_layout.company %>
+				<% if @current_company.logo %>
+					<%= image_tag(@current_company.logo_url) %>
+				<% else %>	
+				<%= @current_company.name %>
+				<% end %>
 			<% else %>	
-			<%= current_subdomain %>
-			<% end %>
+				<div style=" font-family:  <%= @current_company_layout.logo_font_family %>;
+											    color:  <%= @current_company_layout.logo_font_color %>;
+											    font-size:  <%= @current_company_layout.logo_font_size %>;
+											    ">
+					<%= @current_company.name %>
+				</div>
+			<% end %>				
 		</h1>
 	<!-- Nav -->
 		<nav id="nav">

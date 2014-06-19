@@ -10,7 +10,10 @@ class Company::CompanyApplicationController < ApplicationController
   
   def current_company
     @current_company ||= Company.includes(:market, :products, :work_types, :albums, :categories).find_by_custom_domain(request.host) || Company.includes(:market, :products, :work_types, :albums, :categories).find_by_sub_domain(current_subdomain)
-    @current_company_layout = @current_company.layout if @current_company 
+    if @current_company
+      theme = @current_company.layout.theme
+      @current_company_layout = theme ? theme : @current_company.layout
+    end   
   end
  
   def company_address

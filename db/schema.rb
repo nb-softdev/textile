@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617180956) do
+ActiveRecord::Schema.define(version: 20140619190538) do
 
   create_table "album_products", force: true do |t|
     t.integer  "album_id"
@@ -52,24 +52,30 @@ ActiveRecord::Schema.define(version: 20140617180956) do
     t.string   "phone_2"
     t.string   "phone_3"
     t.text     "address"
-    t.string   "what_i_do_label",   default: "What I Do"
-    t.string   "who_i_am_label",    default: "Who I Am"
-    t.string   "my_work_label",     default: "My Work"
+    t.string   "what_i_do_label",      default: "What I Do"
+    t.string   "who_i_am_label",       default: "Who I Am"
+    t.string   "my_work_label",        default: "My Work"
     t.text     "what_i_do_desc"
     t.text     "who_i_am_desc"
     t.text     "my_work_desc"
-    t.string   "footer_content",    default: "© 2014 Textile"
-    t.boolean  "is_active",         default: true
+    t.string   "footer_content",       default: "© 2014 Textile"
+    t.boolean  "is_active",            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "favicon_file_name"
+    t.string   "favicon_content_type"
+    t.integer  "favicon_file_size"
+    t.datetime "favicon_updated_at"
   end
 
   create_table "company_layouts", force: true do |t|
     t.integer  "company_id"
+    t.integer  "company_layout_id"
+    t.string   "theme_name"
     t.string   "header_background_color"
     t.string   "header_text_background_color"
     t.string   "home_background_color"
@@ -80,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140617180956) do
     t.string   "album_sidebar_background_color"
     t.string   "contact_us_background_color"
     t.string   "footer_background_color"
+    t.string   "logo_font_color"
     t.string   "header_font_color"
     t.string   "home_name_font_color"
     t.string   "home_description_font_color"
@@ -108,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140617180956) do
     t.string   "contact_us_name_font"
     t.string   "contact_us_description_font"
     t.string   "footer_font"
+    t.string   "logo_font_family"
     t.string   "header_font_family"
     t.string   "home_name_font_family"
     t.string   "home_description_font_family"
@@ -122,6 +130,7 @@ ActiveRecord::Schema.define(version: 20140617180956) do
     t.string   "contact_us_name_font_family"
     t.string   "contact_us_description_font_family"
     t.string   "footer_font_family"
+    t.string   "logo_font_size"
     t.string   "header_font_size"
     t.string   "home_name_font_size"
     t.string   "home_description_font_size"

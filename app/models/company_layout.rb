@@ -1,7 +1,9 @@
 class CompanyLayout < ActiveRecord::Base
   belongs_to :company
   
-  validates_presence_of  :company_id,:header_background_color,
+  belongs_to :theme, :class_name => 'CompanyLayout', :foreign_key => 'company_layout_id'
+  
+  validates_presence_of  :header_background_color,
                                             :album_background_color,:contact_us_background_color,:footer_background_color,:header_font_color,
                                             :home_name_font_color,:home_description_font_color,:what_i_do_name_font_color,:what_i_do_description_font_color,
                                             :who_i_am_name_font_color,:who_i_am_description_font_color,:album_name_font_color,:album_description_font_color,
@@ -29,6 +31,8 @@ class CompanyLayout < ActiveRecord::Base
   validates_attachment_size :front_background2, :less_than => 2.megabytes
   validates_attachment_size :front_background3, :less_than => 2.megabytes
   validates_attachment_size :front_background4, :less_than => 2.megabytes
+  
+  scope :themes, -> {where("company_id IS NULL")}
   
   def front_background1_url
     front_background1.url(:large)

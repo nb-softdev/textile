@@ -39,6 +39,28 @@ categories.each do |parent, child|
 end
 puts 'CREATED CATEGORIES:'
 
+CompanyLayout.find_or_create_by_theme_name(
+theme_name: "Blue Theme", header_background_color: "#0099cc", header_text_background_color: "#ccffcc", home_background_color: "#ccffcc", 
+what_i_do_background_color: "#ccffcc", who_i_am_background_color: "#ccffcc", my_work_background_color: "#ccffcc", album_background_color: "#ccffcc", 
+album_sidebar_background_color: "#0099cc", contact_us_background_color: "#ccffcc", footer_background_color: "#66ccff", logo_font_color: "#66CCFF", 
+header_font_color: "#0099cc", home_name_font_color: "#003399", home_description_font_color: "#0099cc", what_i_do_name_font_color: "#003399", 
+what_i_do_description_font_color: "#0099cc", who_i_am_name_font_color: "#003399", who_i_am_description_font_color: "#0099cc", 
+album_name_font_color: "#003399", album_description_font_color: "#66ccff", my_work_name_font_color: "#003399", my_work_description_font_color: "#0099cc", 
+contact_us_name_font_color: "#003399", contact_us_description_font_color: "#66ccff", footer_font_color: "#003399", header_font: "normal", 
+home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
+who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
+my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
+footer_font: "oblique", logo_font_family: "Comic Sans MS", header_font_family: "Comic Sans MS", home_name_font_family: "Comic Sans MS", 
+home_description_font_family: "Comic Sans MS", what_i_do_name_font_family: "Comic Sans MS", what_i_do_description_font_family: "Comic Sans MS", 
+who_i_am_name_font_family: "Comic Sans MS", who_i_am_description_font_family: "Comic Sans MS", album_name_font_family: "Comic Sans MS", 
+album_description_font_family: "Comic Sans MS", my_work_name_font_family: "Comic Sans MS", my_work_description_font_family: "Comic Sans MS",
+ contact_us_name_font_family: "Comic Sans MS", contact_us_description_font_family: "Comic Sans MS", footer_font_family: "Comic Sans MS", logo_font_size: "25px", 
+ header_font_size: "15px", home_name_font_size: "60px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
+ what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
+ album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px", 
+ contact_us_description_font_size: "20px", footer_font_size: "15px"
+ )
+puts 'CREATED THEMES:'
 
 
 

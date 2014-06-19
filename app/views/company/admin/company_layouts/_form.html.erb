@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+	<div class="field">
+    	<%= f.label :theme %>
+		<%= f.select :company_layout_id, options_for_select([["Select", ""]] + CompanyLayout.themes.collect {|r| [r.theme_name, r.id]}, @company_layout.company_layout_id)  %>
+   	</div>
+
+
   <div class="field">
       <%= f.label :header_background_color %><br>
     <%= f.text_field :header_background_color, :class => "mini_color" %>

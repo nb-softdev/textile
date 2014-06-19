@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+	<div class="field">
+    	<%= f.label :company_id %>
+		<%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@company_layout.company.id unless @company_layout.company.nil?))  %>
+   	</div>
+   	
+  <div class="field">
+       <%= f.label :theme_name %><br>
+    	<%= f.text_field :theme_name %>
+    </div>
+
   <div class="field">
       <%= f.label :header_background_color %><br>
     <%= f.text_field :header_background_color, :class => "mini_color" %>
@@ -59,20 +69,15 @@
   <div class="form-group">
       <%= f.label :front_background4 %>
     <%= f.file_field :front_background4, :class => "form-control" %>
-    </div>            
-
-
+    </div>    
   <div class="field">
       <%= f.label :album_background_color %><br>
     <%= f.text_field :album_background_color, :class => "mini_color" %>
     </div>
-    
   <div class="field">
       <%= f.label :album_sidebar_background_color %><br>
     <%= f.text_field :album_sidebar_background_color, :class => "mini_color" %>
     </div>    
-    
-
   <div class="field">
       <%= f.label :contact_us_background_color %><br>
     <%= f.text_field :contact_us_background_color, :class => "mini_color" %>
@@ -81,6 +86,12 @@
       <%= f.label :footer_background_color %><br>
     <%= f.text_field :footer_background_color, :class => "mini_color"%>
     </div>
+    
+    
+  <div class="field">
+       <%= f.label :logo_font_color %><br>
+    	<%= f.text_field :logo_font_color, :class => "mini_color" %>
+    </div>        
   <div class="field">
       <%= f.label :header_font_color %><br>
     <%= f.text_field :header_font_color, :class => "mini_color" %>
@@ -139,61 +150,66 @@
     </div>
   <div class="field">
       <%= f.label :header_font %><br>
-    <%= f.text_field :header_font %>
+      <%= f.select  :header_font, options_for_select(font_styles, @company_layout.header_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :home_name_font %><br>
-    <%= f.text_field :home_name_font %>
+      <%= f.select  :home_name_font, options_for_select(font_styles, @company_layout.home_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :home_description_font %><br>
-    <%= f.text_field :home_description_font %>
+      <%= f.select  :home_description_font, options_for_select(font_styles, @company_layout.home_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_name_font %><br>
-    <%= f.text_field :what_i_do_name_font %>
+      <%= f.select  :what_i_do_name_font, options_for_select(font_styles, @company_layout.what_i_do_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_description_font %><br>
-    <%= f.text_field :what_i_do_description_font %>
+      <%= f.select  :what_i_do_description_font, options_for_select(font_styles, @company_layout.what_i_do_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_name_font %><br>
-    <%= f.text_field :who_i_am_name_font %>
+      <%= f.select  :who_i_am_name_font, options_for_select(font_styles, @company_layout.who_i_am_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_description_font %><br>
-    <%= f.text_field :who_i_am_description_font %>
+      <%= f.select  :who_i_am_description_font, options_for_select(font_styles, @company_layout.who_i_am_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :album_name_font %><br>
-    <%= f.text_field :album_name_font %>
+      <%= f.select  :album_name_font, options_for_select(font_styles, @company_layout.album_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :album_description_font %><br>
-    <%= f.text_field :album_description_font %>
+      <%= f.select  :album_description_font, options_for_select(font_styles, @company_layout.album_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :my_work_name_font %><br>
-    <%= f.text_field :my_work_name_font %>
+      <%= f.select  :my_work_name_font, options_for_select(font_styles, @company_layout.my_work_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :my_work_description_font %><br>
-    <%= f.text_field :my_work_description_font %>
+      <%= f.select  :my_work_description_font, options_for_select(font_styles, @company_layout.my_work_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :contact_us_name_font %><br>
-    <%= f.text_field :contact_us_name_font %>
+      <%= f.select  :contact_us_name_font, options_for_select(font_styles, @company_layout.contact_us_name_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :contact_us_description_font %><br>
-    <%= f.text_field :contact_us_description_font %>
+      <%= f.select  :contact_us_description_font, options_for_select(font_styles, @company_layout.contact_us_description_font), :class => "input-xlarge" %>
     </div>
   <div class="field">
       <%= f.label :footer_font %><br>
-    <%= f.text_field :footer_font %>
+      <%= f.select  :footer_font, options_for_select(font_styles, @company_layout.footer_font), :class => "input-xlarge" %>
     </div>
     
+    
+  <div class="field">
+       <%= f.label :logo_font_family %><br>
+    	<%= f.text_field :logo_font_family %>
+    </div>         
   <div class="field">
       <%= f.label :header_font_family %><br>
     <%= f.text_field :header_font_family %>
@@ -251,62 +267,65 @@
     <%= f.text_field :footer_font_family %>
     </div>
     
-        
+  <div class="field">
+      <%= f.label :logo_font_size %><br>
+      <%= f.select :logo_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.logo_font_size) %>
+    </div>
   <div class="field">
       <%= f.label :header_font_size %><br>
-    <%= f.text_field :header_font_size %>
+      <%= f.select :header_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.header_font_size) %>
     </div>
   <div class="field">
       <%= f.label :home_name_font_size %><br>
-    <%= f.text_field :home_name_font_size %>
+      <%= f.select :home_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :home_description_font_size %><br>
-    <%= f.text_field :home_description_font_size %>
+      <%= f.select :home_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_name_font_size %><br>
-    <%= f.text_field :what_i_do_name_font_size %>
+      <%= f.select :what_i_do_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :what_i_do_description_font_size %><br>
-    <%= f.text_field :what_i_do_description_font_size %>
+      <%= f.select :what_i_do_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_name_font_size %><br>
-    <%= f.text_field :who_i_am_name_font_size %>
+      <%= f.select :who_i_am_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :who_i_am_description_font_size %><br>
-    <%= f.text_field :who_i_am_description_font_size %>
+      <%= f.select :who_i_am_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :album_name_font_size %><br>
-    <%= f.text_field :album_name_font_size %>
+      <%= f.select :album_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :album_description_font_size %><br>
-    <%= f.text_field :album_description_font_size %>
+      <%= f.select :album_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :my_work_name_font_size %><br>
-    <%= f.text_field :my_work_name_font_size %>
+      <%= f.select :my_work_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :my_work_description_font_size %><br>
-    <%= f.text_field :my_work_description_font_size %>
+      <%= f.select :my_work_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :contact_us_name_font_size %><br>
-    <%= f.text_field :contact_us_name_font_size %>
+      <%= f.select :contact_us_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_name_font_size) %>
     </div>
   <div class="field">
       <%= f.label :contact_us_description_font_size %><br>
-    <%= f.text_field :contact_us_description_font_size %>
+      <%= f.select :contact_us_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_description_font_size) %>
     </div>
   <div class="field">
       <%= f.label :footer_font_size %><br>
-    <%= f.text_field :footer_font_size %>
+    	<%= f.select :footer_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.footer_font_size) %>
     </div>
   <div class="actions">
     <%= f.submit %>
