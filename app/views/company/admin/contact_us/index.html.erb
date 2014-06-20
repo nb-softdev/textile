@@ -1,6 +1,6 @@
-<h1>Listing contact_us</h1>
-
-<table class="table">
+<h3 class="alert alert-info">Listing contact us</h3>
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
   <thead>
     <tr>
     	<th>Name</th>
@@ -23,3 +23,5 @@
     <% end %>
   </tbody>
 </table>
+	<div class="right"><%= will_paginate @contact_us %></div>
+</div>	

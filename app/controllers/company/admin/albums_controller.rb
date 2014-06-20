@@ -28,7 +28,7 @@ class Company::Admin::AlbumsController < Company::Admin::CompanyAdminApplication
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to [:company_admin, @album], notice: 'Album was successfully created.' }
+        format.html { redirect_to company_admin_albums_url, notice: 'Album was successfully created.' }
         format.json { render action: 'show', status: :created, location: @album }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class Company::Admin::AlbumsController < Company::Admin::CompanyAdminApplication
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to [:company_admin, @album], notice: 'Album was successfully updated.' }
+        format.html { redirect_to company_admin_albums_url, notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

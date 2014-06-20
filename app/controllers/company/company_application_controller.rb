@@ -41,8 +41,6 @@ class Company::CompanyApplicationController < ApplicationController
   end  
   
   def company_subdomain
-    puts '-----------------------------------------------------------------------------------------'
-    puts @current_company.inspect
     if current_subdomain and @current_company.nil?
         redirect_to company_not_found_path
     end

@@ -9,7 +9,7 @@ class CreateMarkets < ActiveRecord::Migration
       t.integer :pincode
       t.float :latitude
       t.float :longitude
-      t.boolean :is_active, :default => 1
+      t.boolean :is_active, :default => true
 
       t.timestamps
     end

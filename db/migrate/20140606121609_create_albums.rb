@@ -5,7 +5,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :code
-      t.boolean :is_active
+      t.boolean :is_active, :default => true
 
       t.timestamps
     end

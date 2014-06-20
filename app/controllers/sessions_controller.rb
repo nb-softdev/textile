@@ -19,7 +19,7 @@ class SessionsController < Devise::SessionsController
     if current_user.is_admin
       respond_with resource, location: "/admin"
     else
-      respond_with resource, location: "/"
+      respond_with resource, location: "/company/admin/home"
     end    
   end
 end

@@ -14,13 +14,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :remember_created_at
 
       ## Trackable
-      t.integer  :sign_in_count, :default => 0, :null => false
+      t.integer  :sign_in_count, :default => false, :null => false
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
-      t.boolean :is_active, :default => 1
-      t.boolean :is_admin, :default => 0
+      t.boolean :is_active, :default => true
+      t.boolean :is_admin, :default => false
 
       ## Confirmable
       # t.string   :confirmation_token

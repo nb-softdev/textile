@@ -1,4 +1,4 @@
-<%= form_for([:company_admin, @album]) do |f| %>
+<%= form_for [:company_admin, @album], :html => {:class => "form-horizontal"} do |f| %>
   <% if @album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
- 	<div class="field">
-    <%= f.label :company_id %>
-		<%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@album.company.id unless @album.company.nil?))  %>
- 	</div>	       	
-  <div class="field">
-      <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    </div>
-  <div class="field">
-      <%= f.label :description %><br>
-    <%= f.text_area :description %>
-    </div>
-  <div class="field">
-      <%= f.label :code %><br>
-    <%= f.text_field :code %>
-    </div>
-  <div class="field">
-      <%= f.label :is_active %><br>
-    <%= f.check_box :is_active %>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
+	<%= f.hidden_field :company_id, :value => @current_company.id  %>
+   	
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Name</label>
+	  	<div class="col-sm-10"><%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Description</label>
+	  	<div class="col-sm-10"><%= f.text_field :description, :class =>"form-control", :placeholder => "Description" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Code</label>
+	  	<div class="col-sm-10"><%= f.text_field :code, :class =>"form-control", :placeholder => "Code" %></div>	
+   </div>
+    
+   <div class="checkbox">
+      <label class="col-sm-2 control-label"></label>
+      <label><%= f.check_box :is_active %> Active</label>
+   </div>   
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', company_admin_albums_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
   </div>
 <% end %>
