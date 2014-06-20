@@ -18,6 +18,9 @@ $company_mobile1 = "9033194939"
 $company_mobile2 = "9033194939"
 $company_phone1 = "9033194939"
 
+#company theme
+$company_theme = "Blue Theme"
+
 #user details
 $user_email = 'demo@email.com'
 $user_name = 'Demo'

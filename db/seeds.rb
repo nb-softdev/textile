@@ -1,13 +1,18 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# The data can then be loaded with the rake db:seed (or CREATE alongside the db with db:setup).
 #
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts '--- '
+puts '--- CREATE ADMIN USER:'
+puts '--- '
 user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
 
+puts '--- '
+puts 'CREATE WORK TYPES:'
+puts '--- '
 work_types = ["Dress Material Wholesalers", "Salwar Suits Manufacturers",
   "Embroidered Silk Dress Materials Wholesalers", "Fancy Dress Materials Wholesalers", "Georgette Based Dress Material Wholesalers",
   "Silver Circle Dress Material Manufacturers", "Bandhani Dress Materials Wholesalers", "Batik Print Dress Material Wholesalers", "Bridal Wear Dress Materials Wholesalers", 
@@ -19,8 +24,10 @@ work_types = ["Dress Material Wholesalers", "Salwar Suits Manufacturers",
 work_types.each do |work_type|
   WorkType.find_or_create_by(name: work_type, description: work_type, is_default: true)
 end
-puts 'CREATED WORK TYPES:'
 
+puts '--- '
+puts '--- CREATE CATEGORIES:'
+puts '--- '
 categories = {
   "Sarees" => ["Bollywood Replica Sarees", "Bridal Sarees", "Bridal Heavy Saree", "Casual Sarees", "Chiffon Sarees"],
   "Salwar Kameez" => ["Ladies Salwar Kameez", "Ladies Salwar Suits", "Net Anarkali Suits", "Net Salwar Kameez", "Patiala Salwar Kameez"],
@@ -37,9 +44,12 @@ categories.each do |parent, child|
     Category.find_or_create_by(name: child_category, category_id: parent_category.id)
   end
 end
-puts 'CREATED CATEGORIES:'
 
-CompanyLayout.find_or_create_by_theme_name(
+puts '--- '
+puts '--- CREATE THEMES:'
+puts '--- '
+
+company_layout = CompanyLayout.find_or_create_by(
 theme_name: "Blue Theme", header_background_color: "#0099cc", header_text_background_color: "#ccffcc", home_background_color: "#ccffcc", 
 what_i_do_background_color: "#ccffcc", who_i_am_background_color: "#ccffcc", my_work_background_color: "#ccffcc", album_background_color: "#ccffcc", 
 album_sidebar_background_color: "#0099cc", contact_us_background_color: "#ccffcc", footer_background_color: "#66ccff", logo_font_color: "#66CCFF", 
@@ -60,8 +70,8 @@ album_description_font_family: "Comic Sans MS", my_work_name_font_family: "Comic
  album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px", 
  contact_us_description_font_size: "20px", footer_font_size: "15px"
  )
-puts 'CREATED THEMES:'
-
-
-
-
+company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background1.jpeg") 
+company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background2.jpeg") 
+company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background3.jpeg") 
+company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background4.jpeg")
+company_layout.save
