@@ -27,8 +27,12 @@ class Company < ActiveRecord::Base
   
   has_attached_file :logo,
   styles: {
-    thumb: "200x60#"
+    thumb: "200x60!",
+    format: 'ico'
   }
+  
+  has_attached_file :favicon,
+  styles: { thumb: "16x16!" }  
 
   validates_attachment_content_type :logo,
                                     :content_type => ['image/gif', 'image/jpg', 'image/jpeg',
@@ -41,5 +45,13 @@ class Company < ActiveRecord::Base
   def logo_url
     logo.url(:thumb)
   end
+
+  def favicon_url
+    favicon.url(:thumb)
+  end  
+  
+  def original_url
+    favicon.url(:original)
+  end  
   
 end

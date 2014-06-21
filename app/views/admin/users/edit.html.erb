@@ -1,6 +1,6 @@
-<div class="authform">
-<h1>Editing user</h1>
-<%= form_for([:admin, @user]) do |f| %>
+
+<h3 class="alert alert-info">Edit</h3>
+<%= form_for [:admin, @user], :html => {:class => "form-horizontal"} do |f| %>
 	  <% if @user.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -13,26 +13,30 @@
 	    </div>
 	  <% end %>
     <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+      <label class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10"><%= f.text_field :name, :autofocus => true, class: 'form-control' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <label class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10"><%= f.email_field :email, class: 'form-control' %></div>
     </div>
     
     <div class="form-group">
-      <%= f.label :photo %>
-      <%= f.file_field :photo, class: 'form-control' %>
+      <label class="col-sm-2 control-label">Photo</label>
+      <div class="col-sm-10"><%= f.file_field :photo, class: 'form-control' %></div>
     </div>    
     
   <div class="form-group">
-    <%= image_tag(@user.photo_url) if @user.photo.present? %>
+  	<label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10"><%= image_tag(@user.photo_url) if @user.photo.present? %></div>
     </div>         
 
-    <%= f.submit 'Update', :class => 'button right' %>
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', admin_users_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
+  </div>
+
   <% end %>
 
-<%= link_to 'Show', [:admin, @user] %> |
-<%= link_to 'Back', admin_users_path %>
-</div>

@@ -1,4 +1,4 @@
-<%= form_for [:admin, @category] do |f| %>
+<%= form_for [:admin, @category], :html => {:class => "form-horizontal"} do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -11,22 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-      <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Name</label>
+	  	<div class="col-sm-10"><%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %></div>	
+   </div>
     
-   	<div class="field">
-      <%= f.label :category_id %>
-			<%= f.select :category_id, options_for_select([["Select", ""]] + Category.active.where("category_id IS NULL").collect {|r| [r.name, r.id]}, (@category.parent.id unless @category.parent.nil?))  %>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Category</label>
+			<div class="col-sm-10"><%= f.select :category_id, options_for_select([["Select", ""]] + Category.active.where("category_id IS NULL").collect {|r| [r.name, r.id]}, (@category.parent.id unless @category.parent.nil?)), :class =>"form-control"  %></div>
    	</div>	    
 
-  <div class="field">
-      <%= f.label :is_active %><br>
-    <%= f.check_box :is_active %>
-    </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   <div class="checkbox">
+      <label class="col-sm-2 control-label"></label>
+      <label><%= f.check_box :is_active %> Active</label>
+   </div>   
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', admin_categories_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
 <% end %>

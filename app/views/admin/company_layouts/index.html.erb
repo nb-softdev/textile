@@ -1,6 +1,6 @@
-<h1>Listing company_layouts</h1>
-
-<table class="table">
+<h3 class="alert alert-info">Listing Company layout <div class="right mt3"><%= link_to 'New Company layout', new_admin_company_layout_path, :class => "btn-primary btn" %></div></h3>
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
   <thead>
     <tr>
       <th>Company</th>
@@ -16,14 +16,14 @@
       <tr>
         <td><%= company_layout.company.name if company_layout.company %></td>
 		<td><%= company_layout.theme_name %></td>
-        <td><%= link_to 'Show', [:admin, company_layout] %></td>
-        <td><%= link_to 'Edit', edit_admin_company_layout_path(company_layout) %></td>
-        <td><%= link_to 'Destroy', [:admin, company_layout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_company_layout_path(company_layout), :class => "btn-success btn" %>
+        <%= link_to 'Destroy', [:admin, company_layout], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-danger btn" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<div class="right"><%= will_paginate @company_layouts %></div>
+</div>
 
-<%= link_to 'New Company layout', new_admin_company_layout_path %>

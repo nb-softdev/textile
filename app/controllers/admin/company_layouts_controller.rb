@@ -28,7 +28,7 @@ class Admin::CompanyLayoutsController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @company_layout.save
-        format.html { redirect_to [:admin, @company_layout], notice: 'Company layout was successfully created.' }
+        format.html { redirect_to admin_company_layouts_url, notice: 'Company layout was successfully created.' }
         format.json { render action: 'show', status: :created, location: @company_layout }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class Admin::CompanyLayoutsController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @company_layout.update(company_layout_params)
-        format.html { redirect_to [:admin, @company_layout], notice: 'Company layout was successfully updated.' }
+        format.html { redirect_to admin_company_layouts_url, notice: 'Company layout was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

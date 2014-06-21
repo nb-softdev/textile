@@ -13,61 +13,49 @@
 
 	<div class="form-group">
     	<label class="col-sm-2 control-label">Select Theme</label>
-		<div class="col-sm-10"><%= f.select :company_layout_id, options_for_select([["Select", ""]] + CompanyLayout.themes.collect {|r| [r.theme_name, r.id]}, @company_layout.company_layout_id)  %></div>
+		<div class="col-sm-10"><%= f.select :company_layout_id, options_for_select([["Custom Theme", ""]] + CompanyLayout.themes.collect {|r| [r.theme_name, r.id]}, @company_layout.company_layout_id)  %></div>
    	</div>
-
-
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Header BG Color</label>
-    	<div class="col-sm-10"><%= f.text_field :header_background_color, :class => "mini_color form-control" %></div>
-    </div>
-
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Header Text BG Color</label>
-    <div class="col-sm-10"><%= f.text_field :header_text_background_color, :class => "mini_color form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Home BG Color</label>
-    <div class="col-sm-10"><%= f.text_field :home_background_color, :class => "mini_color form-control" %></div>
-    </div>    
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">What I Do BG Color</label>
-    <div class="col-sm-10"><%= f.text_field :what_i_do_background_color, :class => "mini_color form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">What I Am BG Color</label>
-    <div class="col-sm-10"><%= f.text_field :who_i_am_background_color, :class => "mini_color form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">My Work BG Color</label>
-    <div class="col-sm-10"><%= f.text_field :my_work_background_color, :class => "mini_color form-control" %></div>
-    </div>            
-
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Front BG Image 1</label>
-    <div class="col-sm-10"><%= f.file_field :front_background1, :class => "form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Front BG Image 2</label>
-    <div class="col-sm-10"><%= f.file_field :front_background2, :class => "form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Front BG Image 3</label>
-    <div class="col-sm-10"><%= f.file_field :front_background3, :class => "form-control" %></div>
-    </div>
-    
-  <div class="form-group">
-      <label class="col-sm-2 control-label">Front BG Image 4</label>
-    <div class="col-sm-10"><%= f.file_field :front_background4, :class => "form-control" %></div>
-    </div>            
-
-
+<div id="layout_form">
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#bg_color_tab" id="bg_color1">BG Color</a></li>
+	<li><a href="#font_color_tab" id="font_color1">Font Color</a></li>
+	<li><a href="#front_bg_image_tab" id="front_bg_image1">Front BG Image</a></li>
+	<li><a href="#font_style_tab" id="font_style1">Font Style</a></li>
+	<li><a href="#font_family_tab" id="font_family1">Font Family</a></li>
+	<li><a href="#font_size_tab" id="font_size1">Font Size</a></li>
+</ul>   
+<div class="clearb">&nbsp;</div>
+<div class="tab-content">
+	<div class="tab-pane active" id="bg_color_tab">
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Header BG Color</label>
+	    	<div class="col-sm-10"><%= f.text_field :header_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Header Text BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :header_text_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Home BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :home_background_color, :class => "mini_color form-control" %></div>
+	    </div>    
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">What I Do BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :what_i_do_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">What I Am BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :who_i_am_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">My Work BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :my_work_background_color, :class => "mini_color form-control" %></div>
+	    </div>
   <div class="form-group">
       <label class="col-sm-2 control-label">Album BG Color</label>
     <div class="col-sm-10"><%= f.text_field :album_background_color, :class => "mini_color form-control" %></div>
@@ -76,9 +64,7 @@
   <div class="form-group">
       <label class="col-sm-2 control-label">Album Sidebar BG Color</label>
     <div class="col-sm-10"><%= f.text_field :album_sidebar_background_color, :class => "mini_color form-control" %></div>
-    </div>    
-    
-
+    </div>
   <div class="form-group">
       <label class="col-sm-2 control-label">Contact Us BG Color</label>
     <div class="col-sm-10"><%= f.text_field :contact_us_background_color, :class => "mini_color form-control" %></div>
@@ -87,6 +73,9 @@
       <label class="col-sm-2 control-label">Footer BG Color</label>
     <div class="col-sm-10"><%= f.text_field :footer_background_color, :class => "mini_color form-control"%></div>
     </div>
+</div>    
+
+<div class="tab-pane" id="font_color_tab">    
   <div class="form-group">
       <label class="col-sm-2 control-label">Header Font Color</label>
     <div class="col-sm-10"><%= f.text_field :header_font_color, :class => "mini_color form-control" %></div>
@@ -142,7 +131,32 @@
   <div class="form-group">
       <label class="col-sm-2 control-label">Footer Font Color</label>
     <div class="col-sm-10"><%= f.text_field :footer_font_color, :class => "mini_color form-control" %></div>
+    </div>    
+</div>            
+
+<div class="tab-pane" id="front_bg_image_tab">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 1</label>
+    <div class="col-sm-10"><%= f.file_field :front_background1, :class => "form-control" %></div>
     </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 2</label>
+    <div class="col-sm-10"><%= f.file_field :front_background2, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 3</label>
+    <div class="col-sm-10"><%= f.file_field :front_background3, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 4</label>
+    <div class="col-sm-10"><%= f.file_field :front_background4, :class => "form-control" %></div>
+    </div>            
+</div>
+
+<div class="tab-pane" id="font_style_tab">
   <div class="form-group">
       <label class="col-sm-2 control-label">Header Font</label>
       <div class="col-sm-10"><%= f.select  :header_font, options_for_select(font_styles, @company_layout.header_font), :class => "form-control" %></div>
@@ -199,7 +213,9 @@
       <label class="col-sm-2 control-label">Footer Font</label>
       <div class="col-sm-10"><%= f.select  :footer_font, options_for_select(font_styles, @company_layout.footer_font), :class => "form-control" %></div>
     </div>
-    
+</div>    
+
+<div class="tab-pane" id="font_family_tab">
   <div class="form-group">
       <label class="col-sm-2 control-label">Header Font Family</label>
     <div class="col-sm-10"><%= f.text_field :header_font_family, :class => "form-control" %></div>
@@ -256,8 +272,9 @@
       <label class="col-sm-2 control-label">Footer Font Family</label>
     <div class="col-sm-10"><%= f.text_field :footer_font_family, :class => "form-control" %></div>
     </div>
-    
+</div>    
         
+<div class="tab-pane" id="font_size_tab">        
   <div class="form-group">
       <label class="col-sm-2 control-label">Header Font Size</label>
       <div class="col-sm-10"><%= f.select :header_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.header_font_size), :class => "form-control" %></div>
@@ -314,6 +331,9 @@
       <label class="col-sm-2 control-label">Footer Font Size</label>
     	<div class="col-sm-10"><%= f.select :footer_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.footer_font_size), :class => "form-control" %></div>
     </div>
+</div>
+</div>
+</div>    
   <div class="form-group">
   	<div class="col-sm-offset-2 col-sm-10">
     	<%= f.submit  :class => "btn-success btn" %>
@@ -333,4 +353,22 @@
 					theme: 'bootstrap'
 				});
 	});
+	
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});  
+	$(function () {
+		$('#myTab a:first').tab('show');
+	});
+	if($('#company_layout_company_layout_id').val()) {
+		$("#layout_form").hide();
+	}
+	$('#company_layout_company_layout_id').change(function (e) {
+		if($('#company_layout_company_layout_id').val()) {
+			$("#layout_form").hide();
+		} else {
+			$("#layout_form").show();
+		}
+	});	 	
 </script>

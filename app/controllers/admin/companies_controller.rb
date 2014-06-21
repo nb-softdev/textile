@@ -33,7 +33,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
         params[:company_work_type][:work_type_id].each do |work_type|
           @company.company_work_types.create(:work_type_id => work_type)
         end        
-        format.html { redirect_to [:admin, @company], notice: 'Company was successfully created.' }
+        format.html { redirect_to admin_companies_url, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class Admin::CompaniesController < Admin::AdminApplicationController
         params[:company_work_type][:work_type_id].each do |work_type|
           @company.company_work_types.create(:work_type_id => work_type)
         end        
-        format.html { redirect_to [:admin, @company], notice: 'Company was successfully updated.' }
+        format.html { redirect_to admin_companies_url, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

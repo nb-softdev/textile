@@ -28,7 +28,7 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @work_type.save
-        format.html { redirect_to [:admin, @work_type], notice: 'Work type was successfully created.' }
+        format.html { redirect_to admin_work_types_url, notice: 'Work type was successfully created.' }
         format.json { render :show, status: :created, location: @work_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::WorkTypesController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @work_type.update(work_type_params)
-        format.html { redirect_to [:admin, @work_type], notice: 'Work type was successfully updated.' }
+        format.html { redirect_to admin_work_types_url, notice: 'Work type was successfully updated.' }
         format.json { render :show, status: :ok, location: @work_type }
       else
         format.html { render :edit }

@@ -1,6 +1,6 @@
-<h1>Listing work_types</h1>
-
-<table class="table">
+<h3 class="alert alert-info">Listing work types <div class="right mt3"><%= link_to 'New Work type', new_admin_work_type_path, :class => "btn-primary btn" %></div></h3>
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
   <thead>
     <tr>
       <th><%= sortable "name", t("general.name") %></th>
@@ -16,16 +16,15 @@
         <td><%= work_type.name %></td>
         <td><%= work_type.description %></td>
         <td><%= work_type.is_active %></td>      	
-        <td><%= link_to 'Show', [:admin, work_type] %></td>
-        <td><%= link_to 'Edit', edit_admin_work_type_path(work_type) %></td>
-        <td><%= link_to 'Destroy', [:admin, work_type], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td><%= link_to 'Edit', edit_admin_work_type_path(work_type), :class => "btn-success btn" %>
+        <%= link_to 'Destroy', [:admin, work_type], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-danger btn" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<div class="right"><%= will_paginate @work_types %></div>
+</div>
 
-<%= will_paginate @work_types %>
-
-<%= link_to 'New Work type', new_admin_work_type_path %>

@@ -1,4 +1,4 @@
-<%= form_for [:admin, @company] do |f| %>
+<%= form_for [:admin, @company], :html => {:class => "form-horizontal"} do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -10,129 +10,126 @@
       </ul>
     </div>
   <% end %>
-<div class="authform">
+
    	<div class="form-group">
-      <%= f.label :market_id %>
-			<%= f.select :market_id, options_for_select([["Select", ""]] + Market.active.collect {|r| [r.name, r.id]}, (@company.market.id unless @company.market.nil?))  %>
+      <label class="col-sm-2 control-label">Market</label>
+			<div class="col-sm-10"><%= f.select :market_id, options_for_select([["Select", ""]] + Market.active.collect {|r| [r.name, r.id]}, (@company.market.id unless @company.market.nil?)), :class => "form-control"  %></div>
    	</div>	    
 
   <div class="form-group">
-      <%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Name</label>
+  <div class="col-sm-10"> <%= f.text_field :name, :class => "form-control" %></div>
     </div>
     
   <div class="form-group">
-      <%= f.label :description %>
-    <%= f.text_area :description, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :sub_domain %>
-    <%= f.text_field :sub_domain, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :custom_domain %>
-    <%= f.text_field :custom_domain, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Description</label>
+  <div class="col-sm-10"> <%= f.text_area :description, :class => "form-control" %></div>
     </div>
 
-  <div class="field">
-      <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-10"><%= f.text_area :address, :class => "form-control" %></div>
     </div>           
 
   <div class="form-group">
-      <%= f.label :contact_person %>
-    <%= f.text_field :contact_person, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Contact person</label>
+   <div class="col-sm-10"> <%= f.text_field :contact_person, :class => "form-control" %></div>
     </div>
   <div class="form-group">
-      <%= f.label :mobile_1 %>
-    <%= f.text_field :mobile_1, :class => "form-control" %>
-    </div>
-
-  <div class="form-group">
-      <%= f.label :mobile_2 %>
-    <%= f.text_field :mobile_2, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :mobile_3 %>
-    <%= f.text_field :mobile_3, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :phone_1 %>
-    <%= f.text_field :phone_1, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :phone_2 %>
-    <%= f.text_field :phone_2, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :phone_3 %>
-    <%= f.text_field :phone_3, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :what_i_do_label %>
-    <%= f.text_field :what_i_do_label, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Mobile 1</label>
+  <div class="col-sm-10"> <%= f.text_field :mobile_1, :class => "form-control" %></div>
     </div>
 
   <div class="form-group">
-      <%= f.label :what_i_do_desc %>
-    <%= f.text_area :what_i_do_desc, :class => "form-control" %>
-    </div>           
+      <label class="col-sm-2 control-label">Mobile 2</label>
+  <div class="col-sm-10"> <%= f.text_field :mobile_2, :class => "form-control" %></div>
+    </div>
     
   <div class="form-group">
-      <%= f.label :who_i_am_label %>
-    <%= f.text_field :who_i_am_label, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Mobile 3</label>
+    <div class="col-sm-10"><%= f.text_field :mobile_3, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Phone 1</label>
+   <div class="col-sm-10"><%= f.text_field :phone_1, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Phone 2</label>
+   <div class="col-sm-10"> <%= f.text_field :phone_2, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Phone 3</label>
+    <div class="col-sm-10"><%= f.text_field :phone_3, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Lable</label>
+    <div class="col-sm-10"><%= f.text_field :what_i_do_label, :class => "form-control" %></div>
     </div>
 
   <div class="form-group">
-      <%= f.label :who_i_am_desc %>
-    <%= f.text_area :who_i_am_desc, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :my_work_label %>
-    <%= f.text_field :my_work_label, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :my_work_desc %>
-    <%= f.text_area :my_work_desc, :class => "form-control" %>
+      <label class="col-sm-2 control-label">What I Do Desc</label>
+    <div class="col-sm-10"><%= f.text_area :what_i_do_desc, :class => "form-control" %></div>
     </div>           
     
   <div class="form-group">
-      <%= f.label :footer_content %>
-    <%= f.text_field :footer_content, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Who I Am Label</label>
+  <div class="col-sm-10">  <%= f.text_field :who_i_am_label, :class => "form-control" %></div>
+    </div>
+
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Desc</label>
+   <div class="col-sm-10"> <%= f.text_area :who_i_am_desc, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Label</label>
+   <div class="col-sm-10"> <%= f.text_field :my_work_label, :class => "form-control" %></div>
+    </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Desc</label>
+    <div class="col-sm-10"><%= f.text_area :my_work_desc, :class => "form-control" %></div>
     </div>           
     
   <div class="form-group">
-      <%= f.label :logo %>
-    <%= f.file_field :logo, :class => "form-control" %>
+      <label class="col-sm-2 control-label">Footer Content</label>
+    <div class="col-sm-10"><%= f.text_field :footer_content, :class => "form-control" %></div>
+    </div>           
+    
+   <div class="checkbox">
+      <label class="col-sm-2 control-label"></label>
+      <label><%= f.check_box :is_active %> Active</label>
+   </div>        
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Logo</label>
+    <div class="col-sm-10"><%= f.file_field :logo, :class => "form-control" %></div>
     </div>   
      
   <div class="form-group">
-    <%= image_tag(@company.logo_url) if @company.logo.present? %>
+  	<label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10"><%= image_tag(@company.logo_url) if @company.logo.present? %></div>
     </div>     
-
-   	<div class="field">
-   		<%= f.label :company_work_types %>
-			<%= select_tag "company_work_type[work_type_id]", options_for_select([["Select", ""]] + WorkType.active.collect {|r| [r.name, r.id]}, @company.work_types.map{|work_type| work_type.id}), :multiple => true  %>
-			<%= hidden_field "company_work_type[company_id]", @company.id %> 
-   	</div>  
     
   <div class="form-group">
-      <%= f.label :is_active %>
-    <%= f.check_box :is_active %>
-    </div>                                                                              
+      <label class="col-sm-2 control-label">Favicon</label>
+    <div class="col-sm-10"><%= f.file_field :favicon, :class => "form-control" %></div>
+    </div>   
+     
+  <div class="form-group">
+  	<label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10"><%= image_tag(@company.original_url) if @company.favicon.present? %></div>
+    </div>        
 
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', admin_companies_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
+  </div>
 
-  <div class="actions">
-    <%= f.submit :class => "button right" %>
-  </div>
-  </div>
 <% end %>

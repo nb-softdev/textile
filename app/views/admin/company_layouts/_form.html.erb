@@ -1,4 +1,4 @@
-<%= form_for([:admin, @company_layout]) do |f| %>
+<%= form_for [:admin, @company_layout], :html => {:class => "form-horizontal"} do |f| %>
   <% if @company_layout.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company_layout.errors.count, "error") %> prohibited this company_layout from being saved:</h2>
@@ -11,324 +11,351 @@
     </div>
   <% end %>
 
-	<div class="field">
-    	<%= f.label :company_id %>
-		<%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@company_layout.company.id unless @company_layout.company.nil?))  %>
-   	</div>
-   	
-  <div class="field">
-       <%= f.label :theme_name %><br>
-    	<%= f.text_field :theme_name %>
-    </div>
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Company</label>
+	    	<div class="col-sm-10"><%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@company_layout.company.id unless @company_layout.company.nil?))  %></div>
+	    </div>
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Theme Name</label>
+	    	<div class="col-sm-10"><%= f.text_field :theme_name, :class => "mini_color form-control" %></div>
+	    </div>	    
 
-  <div class="field">
-      <%= f.label :header_background_color %><br>
-    <%= f.text_field :header_background_color, :class => "mini_color" %>
+<div id="layout_form">
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#bg_color_tab" id="bg_color1">BG Color</a></li>
+	<li><a href="#font_color_tab" id="font_color1">Font Color</a></li>
+	<li><a href="#front_bg_image_tab" id="front_bg_image1">Front BG Image</a></li>
+	<li><a href="#font_style_tab" id="font_style1">Font Style</a></li>
+	<li><a href="#font_family_tab" id="font_family1">Font Family</a></li>
+	<li><a href="#font_size_tab" id="font_size1">Font Size</a></li>
+</ul>   
+<div class="clearb">&nbsp;</div>
+<div class="tab-content">
+	<div class="tab-pane active" id="bg_color_tab">
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Header BG Color</label>
+	    	<div class="col-sm-10"><%= f.text_field :header_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Header Text BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :header_text_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Home BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :home_background_color, :class => "mini_color form-control" %></div>
+	    </div>    
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">What I Do BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :what_i_do_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">What I Am BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :who_i_am_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+	    
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">My Work BG Color</label>
+	    <div class="col-sm-10"><%= f.text_field :my_work_background_color, :class => "mini_color form-control" %></div>
+	    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album BG Color</label>
+    <div class="col-sm-10"><%= f.text_field :album_background_color, :class => "mini_color form-control" %></div>
     </div>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Sidebar BG Color</label>
+    <div class="col-sm-10"><%= f.text_field :album_sidebar_background_color, :class => "mini_color form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us BG Color</label>
+    <div class="col-sm-10"><%= f.text_field :contact_us_background_color, :class => "mini_color form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Footer BG Color</label>
+    <div class="col-sm-10"><%= f.text_field :footer_background_color, :class => "mini_color form-control"%></div>
+    </div>
+</div>    
 
-  <div class="field">
-      <%= f.label :header_text_background_color %><br>
-    <%= f.text_field :header_text_background_color, :class => "mini_color" %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :home_background_color %><br>
-    <%= f.text_field :home_background_color, :class => "mini_color" %>
-    </div>    
-    
-  <div class="field">
-      <%= f.label :what_i_do_background_color %><br>
-    <%= f.text_field :what_i_do_background_color, :class => "mini_color" %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :who_i_am_background_color %><br>
-    <%= f.text_field :who_i_am_background_color, :class => "mini_color" %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :my_work_background_color %><br>
-    <%= f.text_field :my_work_background_color, :class => "mini_color" %>
-    </div>            
-
+<div class="tab-pane" id="font_color_tab">
   <div class="form-group">
-      <%= f.label :front_background1 %>
-    <%= f.file_field :front_background1, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :front_background2 %>
-    <%= f.file_field :front_background2, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :front_background3 %>
-    <%= f.file_field :front_background3, :class => "form-control" %>
-    </div>
-    
-  <div class="form-group">
-      <%= f.label :front_background4 %>
-    <%= f.file_field :front_background4, :class => "form-control" %>
-    </div>    
-  <div class="field">
-      <%= f.label :album_background_color %><br>
-    <%= f.text_field :album_background_color, :class => "mini_color" %>
-    </div>
-  <div class="field">
-      <%= f.label :album_sidebar_background_color %><br>
-    <%= f.text_field :album_sidebar_background_color, :class => "mini_color" %>
-    </div>    
-  <div class="field">
-      <%= f.label :contact_us_background_color %><br>
-    <%= f.text_field :contact_us_background_color, :class => "mini_color" %>
-    </div>
-  <div class="field">
-      <%= f.label :footer_background_color %><br>
-    <%= f.text_field :footer_background_color, :class => "mini_color"%>
-    </div>
-    
-    
-  <div class="field">
-       <%= f.label :logo_font_color %><br>
-    	<%= f.text_field :logo_font_color, :class => "mini_color" %>
+      <label class="col-sm-2 control-label">Logor Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :logo_font_color, :class => "mini_color form-control" %></div>
     </div>        
-  <div class="field">
-      <%= f.label :header_font_color %><br>
-    <%= f.text_field :header_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Header Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :header_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :home_name_font_color %><br>
-    <%= f.text_field :home_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :home_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :home_description_font_color %><br>
-    <%= f.text_field :home_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :home_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :what_i_do_name_font_color %><br>
-    <%= f.text_field :what_i_do_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :what_i_do_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :what_i_do_description_font_color %><br>
-    <%= f.text_field :what_i_do_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :what_i_do_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :who_i_am_name_font_color %><br>
-    <%= f.text_field :who_i_am_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :who_i_am_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :who_i_am_description_font_color %><br>
-    <%= f.text_field :who_i_am_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :who_i_am_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :album_name_font_color %><br>
-    <%= f.text_field :album_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :album_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :album_description_font_color %><br>
-    <%= f.text_field :album_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :album_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :my_work_name_font_color %><br>
-    <%= f.text_field :my_work_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :my_work_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :my_work_description_font_color %><br>
-    <%= f.text_field :my_work_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :my_work_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :contact_us_name_font_color %><br>
-    <%= f.text_field :contact_us_name_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Name Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :contact_us_name_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :contact_us_description_font_color %><br>
-    <%= f.text_field :contact_us_description_font_color, :class => "mini_color" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Desc Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :contact_us_description_font_color, :class => "mini_color form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :footer_font_color %><br>
-    <%= f.text_field :footer_font_color, :class => "mini_color" %>
-    </div>
-  <div class="field">
-      <%= f.label :header_font %><br>
-      <%= f.select  :header_font, options_for_select(font_styles, @company_layout.header_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :home_name_font %><br>
-      <%= f.select  :home_name_font, options_for_select(font_styles, @company_layout.home_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :home_description_font %><br>
-      <%= f.select  :home_description_font, options_for_select(font_styles, @company_layout.home_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :what_i_do_name_font %><br>
-      <%= f.select  :what_i_do_name_font, options_for_select(font_styles, @company_layout.what_i_do_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :what_i_do_description_font %><br>
-      <%= f.select  :what_i_do_description_font, options_for_select(font_styles, @company_layout.what_i_do_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :who_i_am_name_font %><br>
-      <%= f.select  :who_i_am_name_font, options_for_select(font_styles, @company_layout.who_i_am_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :who_i_am_description_font %><br>
-      <%= f.select  :who_i_am_description_font, options_for_select(font_styles, @company_layout.who_i_am_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :album_name_font %><br>
-      <%= f.select  :album_name_font, options_for_select(font_styles, @company_layout.album_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :album_description_font %><br>
-      <%= f.select  :album_description_font, options_for_select(font_styles, @company_layout.album_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :my_work_name_font %><br>
-      <%= f.select  :my_work_name_font, options_for_select(font_styles, @company_layout.my_work_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :my_work_description_font %><br>
-      <%= f.select  :my_work_description_font, options_for_select(font_styles, @company_layout.my_work_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :contact_us_name_font %><br>
-      <%= f.select  :contact_us_name_font, options_for_select(font_styles, @company_layout.contact_us_name_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :contact_us_description_font %><br>
-      <%= f.select  :contact_us_description_font, options_for_select(font_styles, @company_layout.contact_us_description_font), :class => "input-xlarge" %>
-    </div>
-  <div class="field">
-      <%= f.label :footer_font %><br>
-      <%= f.select  :footer_font, options_for_select(font_styles, @company_layout.footer_font), :class => "input-xlarge" %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Footer Font Color</label>
+    <div class="col-sm-10"><%= f.text_field :footer_font_color, :class => "mini_color form-control" %></div>
+    </div>    
+</div>            
+
+<div class="tab-pane" id="front_bg_image_tab">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 1</label>
+    <div class="col-sm-10"><%= f.file_field :front_background1, :class => "form-control" %></div>
     </div>
     
-    
-  <div class="field">
-       <%= f.label :logo_font_family %><br>
-    	<%= f.text_field :logo_font_family %>
-    </div>         
-  <div class="field">
-      <%= f.label :header_font_family %><br>
-    <%= f.text_field :header_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :home_name_font_family %><br>
-    <%= f.text_field :home_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :home_description_font_family %><br>
-    <%= f.text_field :home_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :what_i_do_name_font_family %><br>
-    <%= f.text_field :what_i_do_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :what_i_do_description_font_family %><br>
-    <%= f.text_field :what_i_do_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :who_i_am_name_font_family %><br>
-    <%= f.text_field :who_i_am_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :who_i_am_description_font_family %><br>
-    <%= f.text_field :who_i_am_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :album_name_font_family %><br>
-    <%= f.text_field :album_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :album_description_font_family %><br>
-    <%= f.text_field :album_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :my_work_name_font_family %><br>
-    <%= f.text_field :my_work_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :my_work_description_font_family %><br>
-    <%= f.text_field :my_work_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :contact_us_name_font_family %><br>
-    <%= f.text_field :contact_us_name_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :contact_us_description_font_family %><br>
-    <%= f.text_field :contact_us_description_font_family %>
-    </div>
-  <div class="field">
-      <%= f.label :footer_font_family %><br>
-    <%= f.text_field :footer_font_family %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 2</label>
+    <div class="col-sm-10"><%= f.file_field :front_background2, :class => "form-control" %></div>
     </div>
     
-  <div class="field">
-      <%= f.label :logo_font_size %><br>
-      <%= f.select :logo_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.logo_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 3</label>
+    <div class="col-sm-10"><%= f.file_field :front_background3, :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :header_font_size %><br>
-      <%= f.select :header_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.header_font_size) %>
+    
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Front BG Image 4</label>
+    <div class="col-sm-10"><%= f.file_field :front_background4, :class => "form-control" %></div>
+    </div>            
+</div>
+
+<div class="tab-pane" id="font_style_tab">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Header Font</label>
+      <div class="col-sm-10"><%= f.select  :header_font, options_for_select(font_styles, @company_layout.header_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :home_name_font_size %><br>
-      <%= f.select :home_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Name Font</label>
+      <div class="col-sm-10"><%= f.select  :home_name_font, options_for_select(font_styles, @company_layout.home_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :home_description_font_size %><br>
-      <%= f.select :home_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :home_description_font, options_for_select(font_styles, @company_layout.home_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :what_i_do_name_font_size %><br>
-      <%= f.select :what_i_do_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Name Font</label>
+      <div class="col-sm-10"><%= f.select  :what_i_do_name_font, options_for_select(font_styles, @company_layout.what_i_do_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :what_i_do_description_font_size %><br>
-      <%= f.select :what_i_do_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :what_i_do_description_font, options_for_select(font_styles, @company_layout.what_i_do_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :who_i_am_name_font_size %><br>
-      <%= f.select :who_i_am_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Name Font</label>
+      <div class="col-sm-10"><%= f.select  :who_i_am_name_font, options_for_select(font_styles, @company_layout.who_i_am_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :who_i_am_description_font_size %><br>
-      <%= f.select :who_i_am_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :who_i_am_description_font, options_for_select(font_styles, @company_layout.who_i_am_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :album_name_font_size %><br>
-      <%= f.select :album_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Name Font</label>
+      <div class="col-sm-10"><%= f.select  :album_name_font, options_for_select(font_styles, @company_layout.album_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :album_description_font_size %><br>
-      <%= f.select :album_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :album_description_font, options_for_select(font_styles, @company_layout.album_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :my_work_name_font_size %><br>
-      <%= f.select :my_work_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Name Font</label>
+      <div class="col-sm-10"><%= f.select  :my_work_name_font, options_for_select(font_styles, @company_layout.my_work_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :my_work_description_font_size %><br>
-      <%= f.select :my_work_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :my_work_description_font, options_for_select(font_styles, @company_layout.my_work_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :contact_us_name_font_size %><br>
-      <%= f.select :contact_us_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_name_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Name Font</label>
+      <div class="col-sm-10"><%= f.select  :contact_us_name_font, options_for_select(font_styles, @company_layout.contact_us_name_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :contact_us_description_font_size %><br>
-      <%= f.select :contact_us_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_description_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Desc Font</label>
+      <div class="col-sm-10"><%= f.select  :contact_us_description_font, options_for_select(font_styles, @company_layout.contact_us_description_font), :class => "form-control" %></div>
     </div>
-  <div class="field">
-      <%= f.label :footer_font_size %><br>
-    	<%= f.select :footer_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.footer_font_size) %>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Footer Font</label>
+      <div class="col-sm-10"><%= f.select  :footer_font, options_for_select(font_styles, @company_layout.footer_font), :class => "form-control" %></div>
     </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>    
+
+<div class="tab-pane" id="font_family_tab">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Logo Font Family</label>
+    	<div class="col-sm-10"><%= f.text_field :logo_font_family, :class => "form-control" %></div>
+    </div> 	
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Header Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :header_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :home_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :home_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :what_i_do_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :what_i_do_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :who_i_am_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :who_i_am_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :album_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :album_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :my_work_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :my_work_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Name Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :contact_us_name_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Desc Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :contact_us_description_font_family, :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Footer Font Family</label>
+    <div class="col-sm-10"><%= f.text_field :footer_font_family, :class => "form-control" %></div>
+    </div>
+</div>    
+        
+<div class="tab-pane" id="font_size_tab">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Logo Font Size</label>
+      <div class="col-sm-10"><%= f.select :logo_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.logo_font_size) %></div>
+    </div>	        
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Header Font Size</label>
+      <div class="col-sm-10"><%= f.select :header_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.header_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :home_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Home Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :home_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.home_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :what_i_do_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">What I Do Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :what_i_do_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.what_i_do_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :who_i_am_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Who I Am Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :who_i_am_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.who_i_am_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :album_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Album Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :album_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.album_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :my_work_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">My Work Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :my_work_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.my_work_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Name Font Size</label>
+      <div class="col-sm-10"><%= f.select :contact_us_name_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_name_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Contact Us Desc Font Size</label>
+      <div class="col-sm-10"><%= f.select :contact_us_description_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.contact_us_description_font_size), :class => "form-control" %></div>
+    </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">Footer Font Size</label>
+    	<div class="col-sm-10"><%= f.select :footer_font_size, options_for_select((1..200).step(1).to_a.map{|s| ["#{s}px", "#{s}px"]}, @company_layout.footer_font_size), :class => "form-control" %></div>
+    </div>
+</div>
+</div>
+</div>    
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', admin_company_layouts_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
   </div>
 <% end %>
 
@@ -344,4 +371,22 @@
 					theme: 'bootstrap'
 				});
 	});
+	
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});  
+	$(function () {
+		$('#myTab a:first').tab('show');
+	});
+	if($('#company_layout_company_layout_id').val()) {
+		$("#layout_form").hide();
+	}
+	$('#company_layout_company_layout_id').change(function (e) {
+		if($('#company_layout_company_layout_id').val()) {
+			$("#layout_form").hide();
+		} else {
+			$("#layout_form").show();
+		}
+	});	 	
 </script>

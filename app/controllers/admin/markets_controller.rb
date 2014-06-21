@@ -28,7 +28,7 @@ class Admin::MarketsController < Admin::AdminApplicationController
 
     respond_to do |format|
       if @market.save
-        format.html { redirect_to [:admin, @market], notice: 'Market was successfully created.' }
+        format.html { redirect_to admin_markets_url, notice: 'Market was successfully created.' }
         format.json { render :show, status: :created, location: @market }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::MarketsController < Admin::AdminApplicationController
   def update
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to [:admin, @market], notice: 'Market was successfully updated.' }
+        format.html { redirect_to admin_markets_url, notice: 'Market was successfully updated.' }
         format.json { render :show, status: :ok, location: @market }
       else
         format.html { render :edit }

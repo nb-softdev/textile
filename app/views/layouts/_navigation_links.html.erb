@@ -14,13 +14,13 @@
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% elsif user_signed_in? and current_company %>
 	<li><%= link_to 'Home', "/", class: 'navbar-brand' %></li>
-	<li><%= link_to 'Products', company_admin_products_path %></li>
 	<li><%= link_to 'Albums', company_admin_albums_path %></li>
+	<li><%= link_to 'Products', company_admin_products_path %></li>
+	<li><%= link_to 'Work Types', company_admin_company_work_types_path %></li>
 	<li><%= link_to 'Contact Us', company_admin_contact_us_path %></li>
-	<li><%= link_to 'Edit Account', edit_user_registration_path %></li>
 	<li><%= link_to 'Edit Company', edit_company_admin_company_path(@current_company) %></li>  
 	<li><%= link_to 'Edit Layout', edit_company_admin_company_layout_path(@current_company.layout) %></li>
-	<li><%= link_to 'Work Types', company_admin_company_work_types_path %></li>
+	<li><%= link_to 'Edit Account', edit_user_registration_path %></li>
 	<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% elsif user_signed_in? %>
 	<li><%= link_to 'Home', "/", class: 'navbar-brand' %></li>  

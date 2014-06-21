@@ -1,11 +1,11 @@
-<table class="table">
+<h3 class="alert alert-info">Listing Products - <%= @album.name %></h3>
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
 	<tr>
-		<td width="20%">
-			<%= form_for([:company_admin, @album, @album_product]) do |f| %>
+		<td width="30%">
+			<%= form_for [:company_admin, @album, @album_product], :html => {:class => "form-horizontal"} do |f| %>
 			  <% if @album_product.errors.any? %>
 			    <div id="error_explanation">
-			      <h2><%= pluralize(@album_product.errors.count, "error") %> prohibited this album_product from being saved:</h2>
-			
 			      <ul>
 			      <% @album_product.errors.full_messages.each do |msg| %>
 			        <li><%= msg %></li>
@@ -14,23 +14,25 @@
 			    </div>
 			  <% end %>
 			
-					<%= f.hidden_field :album_id, :value => @album.id %>
-			   	<div class="field">
-			      <%= f.label :product_id %>
-						<%= f.select :product_id, options_for_select([["Select", ""]] + Product.active.where(:company_id => @album.company.id).collect {|r| [r.name, r.id]}, (@album_product.product.id unless @album_product.product.nil?))  %>
-						<%#= f.select :product_id, options_for_select([["Select", ""]] + Product.active.where(:company_id => @album.company.id).collect {|r| [r.name, r.id]}, (@album.products.map{|p| p.id})), {}, {:multiple => true}  %>
-			   	</div>    
-			
-			  <div class="actions">
-			    <%= f.submit %>
+				<%= f.hidden_field :album_id, :value => @album.id %>
+			  <div class="form-group">
+				  	<label class="col-sm-2 control-label">Select Product</label>
+				  	<div class="col-sm-10">	
+				  		<%= f.select :product_id, options_for_select([["Select", ""]] + Product.active.where(:company_id => @album.company.id).collect {|r| [r.name, r.id]}, (@album_product.product.id unless @album_product.product.nil?)), :class =>"form-control"  %>
+				  	</div>	
+			   </div>				
+		
+			  <div class="form-group">
+			  	<div class="col-sm-offset-2 col-sm-10">
+			  		<%= link_to 'Back', company_admin_albums_path, :class => "btn-primary btn" %>
+			    	<%= f.submit  :class => "btn-success btn" %>
+			    </div>	
 			  </div>
 			<% end %>
 		</td>
-		<td width="80%">
-
-				<h1>Listing album_products - <%= @album.name %></h1>
-				
-				<table class="table">
+		<td width="70%">
+			<% if @album_products.count > 0 %>
+				<table class="table table-hover table-condensed">
 				  <thead>
 				    <tr>
 				      <th>Name</th>
@@ -51,7 +53,11 @@
 				  </tbody>
 				</table>
 				<%= will_paginate @album_products %>
+			<% else %>	
+				<h3 class="alert alert-info">Album is empty...!!</h3>
+			<% end %>	
 		</td>	
 	</tr>
-</table>				
+</table>	
+</div>			
 				
