@@ -1,14 +1,12 @@
-<h1>Listing albums</h1>
-
-<table class="table">
+<h3 class="alert alert-info">Listing albums <div class="right mt3"><%= link_to 'New Product', new_admin_album_path, :class => "btn-primary btn" %></div></h3>
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
   <thead>
     <tr>
-      <th>Company</th>
+    	<th>Company</th>
       <th>Name</th>
       <th>Description</th>
       <th>Code</th>
-      <th>Is active</th>
-      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,20 +14,17 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td><%= album.company.name %></td>
+      	<td><%= album.company.try(:name) %></td>
         <td><%= album.name %></td>
         <td><%= album.description %></td>
         <td><%= album.code %></td>
-        <td><%= album.is_active %></td>
-        <th><%= link_to 'Products', admin_album_album_products_path(album) %></th>
-        <td><%= link_to 'Show', [:admin, album] %></td>
-        <td><%= link_to 'Edit', edit_admin_album_path(album) %></td>
-        <td><%= link_to 'Destroy', [:admin, album], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Products', admin_album_album_products_path(album), :class => "btn-primary btn" %>
+        <%= link_to 'Edit', edit_admin_album_path(album), :class => "btn-success btn" %>
+        <%= link_to 'Destroy', [:admin, album], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-danger btn" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-<%= will_paginate @album_products %>
-<%= link_to 'New Album', new_admin_album_path %>
+<div class="right"><%= will_paginate @albums %></div>
+</div>

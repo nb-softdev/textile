@@ -1,8 +1,7 @@
-<%= form_for [:admin, @product] do |f| %>
+<%= form_for [:admin, @product], :html => {:class => "form-horizontal"} do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
       <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,51 +10,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-      <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :description %><br>
-    <%= f.text_area :description %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :code %><br>
-    <%= f.text_field :code %>
-    </div>
-    
-  <div class="field">
-      <%= f.label :price %><br>
-    <%= f.text_field :price %>
-    </div>
-
-   	<div class="field">
-      <%= f.label :category_id %>
-			<%= f.select :category_id, options_for_select([["Select", ""]] + Category.active.where("category_id IS NOT NULL").collect {|r| [r.name, r.id]}, (@product.category.id unless @product.category.nil?))  %>
-   	</div>	    
-   	
-   	<div class="field">
-      <%= f.label :company_id %>
-			<%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@product.company.id unless @product.company.nil?))  %>
-   	</div>	       	
-
-  <div class="field">
-      <%= f.label :is_active %><br>
-    <%= f.check_box :is_active %>
-    </div>    
-
-  <div class="field">
-      <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
-    </div>        
+	  <div class="form-group">
+	      <label class="col-sm-2 control-label">Company</label>
+	    	<div class="col-sm-10"><%= f.select :company_id, options_for_select([["Select", ""]] + Company.active.collect {|r| [r.name, r.id]}, (@product.company.id unless @product.company.nil?))  %></div>
+	    </div>
 
   <div class="form-group">
-    <%= image_tag(@product.photo_url) if @product.photo.present? %>
-    </div>     
+	  	<label class="col-sm-2 control-label">Name</label>
+	  	<div class="col-sm-10"><%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Description</label>
+	  	<div class="col-sm-10"><%= f.text_field :description, :class =>"form-control", :placeholder => "Description" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Code</label>
+	  	<div class="col-sm-10"><%= f.text_field :code, :class =>"form-control", :placeholder => "Code" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Price</label>
+	  	<div class="col-sm-10"><%= f.text_field :price, :class =>"form-control", :placeholder => "Price" %></div>	
+   </div>
+  <div class="form-group">
+	  	<label class="col-sm-2 control-label">Category</label>
+	  	<div class="col-sm-10">
+	  		<%= f.select :category_id, options_for_select([["Select", ""]] + category_options_array, (@product.category.id unless @product.category.nil?)), :class =>"form-control" %>
+	  	</div>	
+   </div>
+   
+   <div class="checkbox">
+      <label class="col-sm-2 control-label"></label>
+      <label><%= f.check_box :is_active %> Active</label>
+   </div>   
+   
+    <div class="form-group">
+	  	<label class="col-sm-2 control-label">Photo</label>
+	  	<div class="col-sm-10"><%= f.file_field :Photo, :class =>"form-control" %></div>	
+   </div>                     
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+  	<label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10"><%= image_tag(@product.photo_url) if @product.photo.present? %></div>
+   </div>     
+
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-10">
+  		<%= link_to 'Back', admin_products_path, :class => "btn-primary btn" %>
+    	<%= f.submit  :class => "btn-success btn" %>
+    </div>	
   </div>
 <% end %>
