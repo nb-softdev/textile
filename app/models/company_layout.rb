@@ -3,6 +3,7 @@ class CompanyLayout < ActiveRecord::Base
   
   belongs_to :theme, :class_name => 'CompanyLayout', :foreign_key => 'company_layout_id'
   
+=begin  
   validates_presence_of  :header_background_color,
                                             :album_background_color,:contact_us_background_color,:footer_background_color,:header_font_color,
                                             :home_name_font_color,:home_description_font_color,:what_i_do_name_font_color,:what_i_do_description_font_color,
@@ -16,7 +17,7 @@ class CompanyLayout < ActiveRecord::Base
                                             :my_work_name_font_size,:my_work_description_font_size,:contact_us_name_font_size,:contact_us_description_font_size, :home_background_color,
                                             :footer_font_size, :header_text_background_color, :what_i_do_background_color, :who_i_am_background_color, :my_work_background_color
                                             
-                                            
+=end                                            
   has_attached_file :front_background1, styles: {large: "1350X655!"}
   has_attached_file :front_background2, styles: {large: "1350X655!"}
   has_attached_file :front_background3, styles: {large: "1350X655!"}

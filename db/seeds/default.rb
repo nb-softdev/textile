@@ -12,17 +12,23 @@ puts '--- '
 puts '--- CREATE COMPANY:'
 puts '--- '
 company = Company.find_or_create_by(market_id: market.id, name: $company_name, sub_domain: $company_sub_domain, contact_person: $company_contact_person, mobile_1: $company_mobile1, 
-                                    mobile_2: $company_mobile1, phone_1: $company_phone1, custom_domain: $company_custom_domain)
+                                    mobile_2: $company_mobile1, phone_1: $company_phone1, custom_domain: $company_custom_domain, what_i_do_label: $what_i_do_label,
+                                    who_i_am_label: $who_i_am_label, my_work_label: $my_work_label, what_i_do_desc: $what_i_do_desc, who_i_am_desc: $who_i_am_desc)
 
-company.logo = File.new("#{Rails.root}/db/seeds/assets/images/#{$company_logo.to_s}")
-company.save
-puts company.inspect 
+logo_path = "#{Rails.root}/db/seeds/assets/images/companies/#{$company_sub_domain}/logo"
+Dir.foreach(logo_path) do |photo|
+	unless photo == '.' or photo == '..'
+		company.logo = File.new("#{logo_path}/#{photo}")
+		company.save
+	end
+end
+puts company.inspect
 
 
 puts '--- '
 puts '--- CREATE COMPANY LAYOUT:'
 puts '--- '
-theme = CompanyLayout.find_by_theme_name($company_theme)
+theme = CompanyLayout.find_by_theme_type($company_theme)
 company_layout = CompanyLayout.new
 company_layout.company_id = company.id
 company_layout.company_layout_id = theme.id
@@ -56,19 +62,16 @@ end
 
 
 puts '--- '
-puts '--- CREATE CATEGORY:'
-puts '--- '
-category = Category.find_or_create_by(name: $category_name)
-puts category.inspect
-
-
-puts '--- '
 puts '--- CREATE PRODUCTS:'
 puts '--- '
-$products.each do |name, photo|
-  product = Product.find_or_create_by(name: name, company_id: company.id, category_id: category.id, code: name)
-  product.photo = File.new("#{Rails.root}/db/seeds/assets/images/#{photo.to_s}")
-  product.save
-  puts product.inspect
-end
 
+products_path = "#{Rails.root}/db/seeds/assets/images/companies/#{$company_sub_domain}/products"
+
+Dir.foreach(products_path) do |photo|
+	unless photo == '.' or photo == '..'
+		product = Product.find_or_create_by(name: photo, company_id: company.id, code: "123")
+		product.photo = File.new("#{products_path}/#{photo}")
+		product.save
+		puts product.inspect	
+	end	
+end

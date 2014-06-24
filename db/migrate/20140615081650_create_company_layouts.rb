@@ -4,6 +4,7 @@ class CreateCompanyLayouts < ActiveRecord::Migration
       t.integer :company_id
       t.integer :company_layout_id
       t.string :theme_name
+      t.string :theme_type
       
       t.string :header_background_color
       t.string :header_text_background_color

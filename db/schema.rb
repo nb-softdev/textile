@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140619190538) do
     t.string   "name"
     t.text     "description"
     t.string   "code"
-    t.boolean  "is_active"
+    t.boolean  "is_active",   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140619190538) do
     t.integer  "company_id"
     t.integer  "company_layout_id"
     t.string   "theme_name"
+    t.string   "theme_type"
     t.string   "header_background_color"
     t.string   "header_text_background_color"
     t.string   "home_background_color"

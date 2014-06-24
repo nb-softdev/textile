@@ -49,29 +49,113 @@ puts '--- '
 puts '--- CREATE THEMES:'
 puts '--- '
 
+puts ' ---    Blue Theme'
 company_layout = CompanyLayout.find_or_create_by(
-theme_name: "Blue Theme", header_background_color: "#0099cc", header_text_background_color: "#ccffcc", home_background_color: "#ccffcc", 
-what_i_do_background_color: "#ccffcc", who_i_am_background_color: "#ccffcc", my_work_background_color: "#ccffcc", album_background_color: "#ccffcc", 
-album_sidebar_background_color: "#0099cc", contact_us_background_color: "#ccffcc", footer_background_color: "#66ccff", logo_font_color: "#66CCFF", 
-header_font_color: "#0099cc", home_name_font_color: "#003399", home_description_font_color: "#0099cc", what_i_do_name_font_color: "#003399", 
-what_i_do_description_font_color: "#0099cc", who_i_am_name_font_color: "#003399", who_i_am_description_font_color: "#0099cc", 
-album_name_font_color: "#003399", album_description_font_color: "#66ccff", my_work_name_font_color: "#003399", my_work_description_font_color: "#0099cc", 
-contact_us_name_font_color: "#003399", contact_us_description_font_color: "#66ccff", footer_font_color: "#003399", header_font: "normal", 
-home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
-who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
-my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
-footer_font: "oblique", logo_font_family: "Comic Sans MS", header_font_family: "Comic Sans MS", home_name_font_family: "Comic Sans MS", 
-home_description_font_family: "Comic Sans MS", what_i_do_name_font_family: "Comic Sans MS", what_i_do_description_font_family: "Comic Sans MS", 
-who_i_am_name_font_family: "Comic Sans MS", who_i_am_description_font_family: "Comic Sans MS", album_name_font_family: "Comic Sans MS", 
-album_description_font_family: "Comic Sans MS", my_work_name_font_family: "Comic Sans MS", my_work_description_font_family: "Comic Sans MS",
- contact_us_name_font_family: "Comic Sans MS", contact_us_description_font_family: "Comic Sans MS", footer_font_family: "Comic Sans MS", logo_font_size: "25px", 
- header_font_size: "15px", home_name_font_size: "60px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
- what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
- album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px", 
- contact_us_description_font_size: "20px", footer_font_size: "15px"
+	theme_name: "Blue Theme", theme_type: "blue_theme", header_background_color: "#b7bec9", header_text_background_color: "#e0e026", home_background_color: "#b7bec9", 
+	what_i_do_background_color: "#b7bec9", who_i_am_background_color: "#b7bec9", my_work_background_color: "#b7bec9", album_background_color: "#b7bec9", 
+	album_sidebar_background_color: "#e0e026", contact_us_background_color: "#e0e026", footer_background_color: "#b7bec9", logo_font_color: "#e0e026", 
+	header_font_color: "#b7bec9", home_name_font_color: "#e0e026", home_description_font_color: "#4382cb", what_i_do_name_font_color: "#e0e026", 
+	what_i_do_description_font_color: "#4382cb", who_i_am_name_font_color: "#e0e026", who_i_am_description_font_color: "#4382cb", 
+	album_name_font_color: "#e0e026", album_description_font_color: "#4382cb", my_work_name_font_color: "#e0e026", my_work_description_font_color: "#4382cb", 
+	contact_us_name_font_color: "#e0e026", contact_us_description_font_color: "#4382cb", footer_font_color: "#e0e026", header_font: "normal", 
+	home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
+	who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
+	my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
+	
+	footer_font: "oblique", logo_font_family: "wild_west_windregular", header_font_family: "generationregular", home_name_font_family: "smile_paraderegular", 
+	home_description_font_family: "mariana_familyregular", what_i_do_name_font_family: "smile_paraderegular", what_i_do_description_font_family: "mariana_familyregular", 
+	who_i_am_name_font_family: "smile_paraderegular", who_i_am_description_font_family: "mariana_familyregular", album_name_font_family: "smile_paraderegular", 
+	album_description_font_family: "mariana_familyregular", my_work_name_font_family: "Arial Black,Sans Serif", my_work_description_font_family: "mariana_familyregular",
+	contact_us_name_font_family: "smile_paraderegular", contact_us_description_font_family: "mariana_familyregular", footer_font_family: "mariana_familyregular", 
+	logo_font_size: "25px", header_font_size: "15px", home_name_font_size: "40px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
+	what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
+	album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px"
+	contact_us_description_font_size: "20px", footer_font_size: "15px"
  )
-company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background1.jpeg") 
-company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background2.jpeg") 
-company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background3.jpeg") 
-company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/blue_theme/front_background4.jpeg")
+company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/themes/blue_theme/front_background1.jpeg") 
+company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/themes/blue_theme/front_background2.jpeg") 
+company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/themes/blue_theme/front_background3.jpeg") 
+company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/themes/blue_theme/front_background4.jpeg")
+company_layout.save
+
+
+puts ' ---    Black Theme'
+company_layout = CompanyLayout.find_or_create_by(
+	theme_name: "Black Theme", theme_type: "black_theme", header_background_color: "#b7bec9", header_text_background_color: "#070b21", home_background_color: "#b7bec9", 
+	what_i_do_background_color: "#b7bec9", who_i_am_background_color: "#b7bec9", my_work_background_color: "#b7bec9", album_background_color: "#b7bec9", 
+	album_sidebar_background_color: "#070b21", contact_us_background_color: "#070b21", footer_background_color: "#b7bec9", logo_font_color: "#070b21", 
+	header_font_color: "#b7bec9", home_name_font_color: "#070b21", home_description_font_color: "#4382cb", what_i_do_name_font_color: "#070b21", 
+	what_i_do_description_font_color: "#4382cb", who_i_am_name_font_color: "#070b21", who_i_am_description_font_color: "#4382cb", 
+	album_name_font_color: "#070b21", album_description_font_color: "#4382cb", my_work_name_font_color: "#070b21", my_work_description_font_color: "#4382cb", 
+	contact_us_name_font_color: "#070b21", contact_us_description_font_color: "#4382cb", footer_font_color: "#070b21", header_font: "normal", 
+	home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
+	who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
+	my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
+	footer_font: "oblique", logo_font_family: "wild_west_windregular", header_font_family: "generationregular", home_name_font_family: "smile_paraderegular", 
+	home_description_font_family: "mariana_familyregular", what_i_do_name_font_family: "smile_paraderegular", what_i_do_description_font_family: "mariana_familyregular", 
+	who_i_am_name_font_family: "smile_paraderegular", who_i_am_description_font_family: "mariana_familyregular", album_name_font_family: "smile_paraderegular", 
+	album_description_font_family: "mariana_familyregular", my_work_name_font_family: "Arial Black,Sans Serif", my_work_description_font_family: "mariana_familyregular",
+	contact_us_name_font_family: "smile_paraderegular", contact_us_description_font_family: "mariana_familyregular", footer_font_family: "mariana_familyregular", 
+	logo_font_size: "25px", header_font_size: "15px", home_name_font_size: "40px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
+	what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
+	album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px"
+ )
+company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/themes/black_theme/front_background1.jpeg") 
+company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/themes/black_theme/front_background2.jpeg") 
+company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/themes/black_theme/front_background3.jpeg") 
+company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/themes/black_theme/front_background4.jpeg")
+company_layout.save
+
+puts ' ---    Pink Theme'
+company_layout = CompanyLayout.find_or_create_by(
+	theme_name: "Pink Theme", theme_type: "pink_theme", header_background_color: "#b7bec9", header_text_background_color: "#FFBDC5", home_background_color: "#b7bec9", 
+	what_i_do_background_color: "#b7bec9", who_i_am_background_color: "#b7bec9", my_work_background_color: "#b7bec9", album_background_color: "#b7bec9", 
+	album_sidebar_background_color: "#FFBDC5", contact_us_background_color: "#FFBDC5", footer_background_color: "#b7bec9", logo_font_color: "#FFBDC5", 
+	header_font_color: "#b7bec9", home_name_font_color: "#FFBDC5", home_description_font_color: "#4382cb", what_i_do_name_font_color: "#FFBDC5", 
+	what_i_do_description_font_color: "#4382cb", who_i_am_name_font_color: "#FFBDC5", who_i_am_description_font_color: "#4382cb", 
+	album_name_font_color: "#FFBDC5", album_description_font_color: "#4382cb", my_work_name_font_color: "#FFBDC5", my_work_description_font_color: "#4382cb", 
+	contact_us_name_font_color: "#FFBDC5", contact_us_description_font_color: "#4382cb", footer_font_color: "#FFBDC5", header_font: "normal", 
+	home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
+	who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
+	my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
+	footer_font: "oblique", logo_font_family: "wild_west_windregular", header_font_family: "generationregular", home_name_font_family: "smile_paraderegular", 
+	home_description_font_family: "mariana_familyregular", what_i_do_name_font_family: "smile_paraderegular", what_i_do_description_font_family: "mariana_familyregular", 
+	who_i_am_name_font_family: "smile_paraderegular", who_i_am_description_font_family: "mariana_familyregular", album_name_font_family: "smile_paraderegular", 
+	album_description_font_family: "mariana_familyregular", my_work_name_font_family: "Arial Black,Sans Serif", my_work_description_font_family: "mariana_familyregular",
+	contact_us_name_font_family: "smile_paraderegular", contact_us_description_font_family: "mariana_familyregular", footer_font_family: "mariana_familyregular", 
+	logo_font_size: "25px", header_font_size: "15px", home_name_font_size: "40px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
+	what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
+	album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px"
+ )
+company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/themes/pink_theme/front_background1.jpeg") 
+company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/themes/pink_theme/front_background2.jpeg") 
+company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/themes/pink_theme/front_background3.jpeg") 
+company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/themes/pink_theme/front_background4.jpeg")
+company_layout.save
+
+puts ' ---    Purple Theme'
+company_layout = CompanyLayout.find_or_create_by(
+	theme_name: "Purple Theme", theme_type: "purple_theme", header_background_color: "#b7bec9", header_text_background_color: "#1C001C", home_background_color: "#b7bec9", 
+	what_i_do_background_color: "#b7bec9", who_i_am_background_color: "#b7bec9", my_work_background_color: "#b7bec9", album_background_color: "#b7bec9", 
+	album_sidebar_background_color: "#1C001C", contact_us_background_color: "#1C001C", footer_background_color: "#b7bec9", logo_font_color: "#1C001C", 
+	header_font_color: "#b7bec9", home_name_font_color: "#1C001C", home_description_font_color: "#4382cb", what_i_do_name_font_color: "#1C001C", 
+	what_i_do_description_font_color: "#4382cb", who_i_am_name_font_color: "#1C001C", who_i_am_description_font_color: "#4382cb", 
+	album_name_font_color: "#1C001C", album_description_font_color: "#4382cb", my_work_name_font_color: "#1C001C", my_work_description_font_color: "#4382cb", 
+	contact_us_name_font_color: "#1C001C", contact_us_description_font_color: "#4382cb", footer_font_color: "#1C001C", header_font: "normal", 
+	home_name_font: "normal", home_description_font: "italic", what_i_do_name_font: "normal", what_i_do_description_font: "italic", 
+	who_i_am_name_font: "normal", who_i_am_description_font: "italic", album_name_font: "normal", album_description_font: "italic", 
+	my_work_name_font: "normal", my_work_description_font: "italic", contact_us_name_font: "normal", contact_us_description_font: "italic", 
+	footer_font: "oblique", logo_font_family: "wild_west_windregular", header_font_family: "generationregular", home_name_font_family: "smile_paraderegular", 
+	home_description_font_family: "mariana_familyregular", what_i_do_name_font_family: "smile_paraderegular", what_i_do_description_font_family: "mariana_familyregular", 
+	who_i_am_name_font_family: "smile_paraderegular", who_i_am_description_font_family: "mariana_familyregular", album_name_font_family: "smile_paraderegular", 
+	album_description_font_family: "mariana_familyregular", my_work_name_font_family: "Arial Black,Sans Serif", my_work_description_font_family: "mariana_familyregular",
+	contact_us_name_font_family: "smile_paraderegular", contact_us_description_font_family: "mariana_familyregular", footer_font_family: "mariana_familyregular", 
+	logo_font_size: "25px", header_font_size: "15px", home_name_font_size: "40px", home_description_font_size: "20px", what_i_do_name_font_size: "40px", 
+	what_i_do_description_font_size: "20px", who_i_am_name_font_size: "40px", who_i_am_description_font_size: "20px", album_name_font_size: "40px", 
+	album_description_font_size: "20px", my_work_name_font_size: "40px", my_work_description_font_size: "20px", contact_us_name_font_size: "40px"
+ )
+company_layout.front_background1 = File.new("#{Rails.root}/db/seeds/assets/images/themes/purple_theme/front_background1.jpeg") 
+company_layout.front_background2 = File.new("#{Rails.root}/db/seeds/assets/images/themes/purple_theme/front_background2.jpeg") 
+company_layout.front_background3 = File.new("#{Rails.root}/db/seeds/assets/images/themes/purple_theme/front_background3.jpeg") 
+company_layout.front_background4 = File.new("#{Rails.root}/db/seeds/assets/images/themes/purple_theme/front_background4.jpeg")
 company_layout.save

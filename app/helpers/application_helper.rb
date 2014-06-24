@@ -12,6 +12,23 @@ module ApplicationHelper
   
   def font_families
     [["Select Font Family", "" ]] + 
+    [["Font Awesome", "FontAwesome"]] + 
+    [["<styleLimousineregular", "limousineregular"]] + 
+    [["Cast Ironregular", "cast_ironregular"]] + 
+    [["Mariana Familyregular", "mariana_familyregular"]] + 
+    [["Shady Charactersmedium", "shady_charactersmedium"]] + 
+    [["Arcadiaregular", "arcadiaregular"]] + 
+    [["Espionageregular", "espionageregular"]] + 
+    [["Freezerregular", "freezerregular"]] + 
+    [["Funky Clawregular", "funky_clawregular"]] + 
+    [["Funky Clawregular", "funky_clawregular"]] + 
+    [["Generationregular", "generationregular"]] + 
+    [["Gentleman Callerregular", "gentleman_callerregular"]] + 
+    [["Rechargebold", "rechargebold"]] + 
+    [["Regencielight", "regencielight"]] + 
+    [["Smile Paraderegular", "smile_paraderegular"]] + 
+    [["Wild West Shadowregular", "wild_west_shadowregular"]] + 
+    [["Wild West Windregular", "wild_west_windregular"]] + 
     [["Adelle", "Arial,Sans Serif"]] + 
     [["Arial Black", "Arial Black,Sans Serif"]] +
     [["Arial Narrow", "Arial Narrow,Sans Serif"]] +
