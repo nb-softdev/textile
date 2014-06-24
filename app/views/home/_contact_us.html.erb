@@ -7,18 +7,18 @@
 	<%= f.hidden_field :company_id, :value => (@current_company.id if @current_company.present?), :placeholder => "Name" %>
 	<div class="row half">
 		<div class="4u">
-			<%= f.text_field :name, :placeholder => "Name" %>
+			<%= f.text_field :name, :placeholder => "Your Name" %>
 		</div>
 		<div class="4u">
-			<%= f.text_field :email, :placeholder => "Email" %>
+			<%= f.text_field :email, :placeholder => "Your Email" %>
 		</div>
 		<div class="4u">
-			<%= f.text_field :phone, :placeholder => "Phone" %>
+			<%= f.text_field :phone, :placeholder => "Your Phone" %>
 		</div>						
 	</div>
 	<div class="row half">
 		<div class="12u">
-			<%= f.text_area :message, :placeholder => "Message", :rows => "6" %>
+			<%= f.text_area :message, :placeholder => "Your Message", :rows => "6" %>
 		</div>
 	</div>
 	<div class="row">

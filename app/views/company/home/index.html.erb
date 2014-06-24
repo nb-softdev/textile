@@ -7,13 +7,13 @@
 										font-family:  <%= @current_company_layout.home_name_font_family %>;
 										color:  <%= @current_company_layout.home_name_font_color %>;
 										font-style:  <%= @current_company_layout.home_name_font %>;
-												    "><%= @current_company.name %>.</h2>
+												    "><%= @current_company.name %></h2>
 				</header>
 				<p style="font-size:  <%= @current_company_layout.home_description_font_size %>;
 										font-family:  <%= @current_company_layout.home_description_font_family %>;
 										color:  <%= @current_company_layout.home_description_font_color %>;
 										font-style:  <%= @current_company_layout.home_description_font %>;
-												    ">Welcome to <strong><%= @current_company.name %></strong> <%= @current_company.description %></p>
+												    ">Welcome to <strong><%= @current_company.name %>.</strong> <%= @current_company.description %></p>
 			</div>									    
 			<footer>
 				<a href="#one" class="button style2 down">More</a>
@@ -107,10 +107,11 @@
 									color:  <%= @current_company_layout.contact_us_description_font_color %>;
 									font-style:  <%= @current_company_layout.contact_us_description_font %>;
 											    ">
-					<%= company_address %><br /><br />
+					<%= company_address %><br />
 					Contact Person: <%= @current_company.contact_person %><br />
 					Mobile: <%= company_mobiles %><br />
-					Phone: <%= company_phones %>							
+					Phone: <%= company_phones %><br />
+					Email: <%= @current_company.user.try(:email) %><br />							
 				</p>						
 			</header>
 			<div class="box container small">

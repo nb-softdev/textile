@@ -11,7 +11,7 @@ puts market.inspect
 puts '--- '
 puts '--- CREATE COMPANY:'
 puts '--- '
-company = Company.find_or_create_by(market_id: market.id, name: $company_name, sub_domain: $company_sub_domain, contact_person: $company_contact_person, mobile_1: $company_mobile1, 
+company = Company.find_or_create_by(market_id: market.id, name: $company_name, description: $company_description, sub_domain: $company_sub_domain, contact_person: $company_contact_person, mobile_1: $company_mobile1, 
                                     mobile_2: $company_mobile1, phone_1: $company_phone1, custom_domain: $company_custom_domain, what_i_do_label: $what_i_do_label,
                                     who_i_am_label: $who_i_am_label, my_work_label: $my_work_label, what_i_do_desc: $what_i_do_desc, who_i_am_desc: $who_i_am_desc)
 

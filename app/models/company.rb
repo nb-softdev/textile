@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
-  has_many :company_users, dependent: :destroy
-  has_many :users, through: :company_users  
+  has_one :company_user, dependent: :destroy
+  has_one :user, through: :company_user  
   
   has_many :company_work_types, dependent: :destroy
   has_many :work_types, through: :company_work_types

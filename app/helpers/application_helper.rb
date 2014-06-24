@@ -19,8 +19,7 @@ module ApplicationHelper
     [["Shady Charactersmedium", "shady_charactersmedium"]] + 
     [["Arcadiaregular", "arcadiaregular"]] + 
     [["Espionageregular", "espionageregular"]] + 
-    [["Freezerregular", "freezerregular"]] + 
-    [["Funky Clawregular", "funky_clawregular"]] + 
+    [["Freezerregular", "freezerregular"]] +
     [["Funky Clawregular", "funky_clawregular"]] + 
     [["Generationregular", "generationregular"]] + 
     [["Gentleman Callerregular", "gentleman_callerregular"]] + 
