@@ -28,10 +28,10 @@ class CompanyLayout < ActiveRecord::Base
   validates_attachment_content_type :front_background3, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
   validates_attachment_content_type :front_background4, :content_type => ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/tiff'], :message => 'file must be of an image format'
 
-  validates_attachment_size :front_background1, :less_than => 2.megabytes  
-  validates_attachment_size :front_background2, :less_than => 2.megabytes
-  validates_attachment_size :front_background3, :less_than => 2.megabytes
-  validates_attachment_size :front_background4, :less_than => 2.megabytes
+  validates_attachment_size :front_background1, :less_than => 10.megabytes  
+  validates_attachment_size :front_background2, :less_than => 10.megabytes
+  validates_attachment_size :front_background3, :less_than => 10.megabytes
+  validates_attachment_size :front_background4, :less_than => 10.megabytes
   
   scope :themes, -> {where("company_id IS NULL")}
   

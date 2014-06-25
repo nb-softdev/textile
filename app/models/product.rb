@@ -11,10 +11,13 @@ class Product < ActiveRecord::Base
   
   has_attached_file :photo,
   styles: {
-    thumb: "400x",
-    small: "100x100",
+    thumb: "100x100!",
+    small: "300x200!",
     original: "100%"
-  }
+  },
+  convert_options: {
+		small: "-thumbnail 300x200!  -bordercolor white -background white  +polaroid"
+	}
   
   validates_attachment_content_type :photo,
                                     :content_type => ['image/gif', 'image/jpg', 'image/jpeg',
