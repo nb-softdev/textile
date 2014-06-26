@@ -40,8 +40,6 @@ gem 'devise'
 #font-awesome
 gem 'font-awesome-rails'
 
-gem "will_paginate"
-
 #random key generate
 gem 'webget_ruby_secure_random'
 
