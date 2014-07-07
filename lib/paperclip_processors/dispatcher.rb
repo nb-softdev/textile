@@ -179,6 +179,8 @@ module Paperclip
 
       Paperclip.run(command)
       
+      Paperclip.run(CropperItem.trans_command) if @document.is_cropped?
+      
       temp
     end
   end
@@ -196,5 +198,44 @@ module Paperclip
       temp
     end
   end    
+  
+  
+  class CropperItem < Thumbnail
+    def trans_command
+      if crop_command
+				crop_command + super
+      else
+        super
+      end
+    end
+
+    def crop_command(dimensions = nil)
+      target = @attachment.instance
+      if target.cropping?
+        case dimensions
+        when 'square'
+          if target.crop_w > target.crop_h
+            crop_w = target.crop_w.to_i
+            crop_h = target.crop_w.to_i
+            crop_x = target.crop_x.to_i
+            crop_y = target.crop_y.to_i - ((target.crop_w.to_i-target.crop_h.to_i)/2).to_i
+          elsif target.crop_w < target.crop_h
+            crop_w = target.crop_h.to_i
+            crop_h = target.crop_h.to_i
+            crop_x = target.crop_x.to_i - ((target.crop_h.to_i-target.crop_w.to_i)/2).to_i
+            crop_y = target.crop_y.to_i
+          else
+            crop_w = target.crop_w.to_i
+            crop_h = target.crop_h.to_i
+            crop_x = target.crop_x.to_i
+            crop_y = target.crop_y.to_i
+          end
+          ["-crop", "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}", "+repage"]
+        else
+          ["-crop", "#{target.crop_w.to_i}x#{target.crop_h.to_i}+#{target.crop_x.to_i}+#{target.crop_y.to_i}", "+repage"]
+        end
+      end
+    end
+  end  
 
 end
